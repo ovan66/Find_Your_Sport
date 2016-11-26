@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FindYouSport</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="facebook_application_id" translatable="false">1243520192337680</string>
+</resources>

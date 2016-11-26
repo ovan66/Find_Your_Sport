@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "581785491396",
+    "firebase_url": "https://findyousport-c197e.firebaseio.com",
+    "project_id": "findyousport-c197e",
+    "storage_bucket": "findyousport-c197e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581785491396:android:cf5c08a8afb8a7c7",
+        "android_client_info": {
+          "package_name": "com.bastian.findyousport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581785491396-1ntsm8htn8vnse1qc7ufrd04483j7uo2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bastian.findyousport",
+            "certificate_hash": "879BB5C75E628A22F2E504BBB2E0C7B4F81EC029"
+          }
+        },
+        {
+          "client_id": "581785491396-r8qtpjorhsguu7dbd7o598hgr45sskbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrml29OL3zmx99oe0s3TELdKIl8oyVHSU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581785491396-r8qtpjorhsguu7dbd7o598hgr45sskbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
