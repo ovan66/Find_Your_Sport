@@ -1,7 +1,14 @@
 <resources>
-    <string name="app_name">FindYouSport</string>
+    <string name="app_name">Find You Sport</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="facebook_application_id" translatable="false">1243520192337680</string>
+    <string name="title_activity_main">Lista de deportes</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+
 </resources>
