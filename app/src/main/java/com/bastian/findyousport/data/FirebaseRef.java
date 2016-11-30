@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.data;
+package com.bastian.findyousport.data;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

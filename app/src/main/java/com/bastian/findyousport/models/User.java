@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.models;
+package com.bastian.findyousport.models;
 
 /**
  * Created by santo_000 on 29-11-2016.

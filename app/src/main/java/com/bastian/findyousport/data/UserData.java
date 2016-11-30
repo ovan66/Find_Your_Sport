@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.data;
+package com.bastian.findyousport.data;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

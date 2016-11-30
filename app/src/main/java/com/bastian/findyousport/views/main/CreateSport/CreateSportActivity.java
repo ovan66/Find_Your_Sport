@@ -7,10 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.views.data.FirebaseRef;
-import com.bastian.findyousport.views.data.UserData;
-import com.bastian.findyousport.views.models.Event;
-import com.bastian.findyousport.views.models.User;
+import com.bastian.findyousport.data.FirebaseRef;
+import com.bastian.findyousport.data.UserData;
+import com.bastian.findyousport.models.Event;
+import com.bastian.findyousport.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
