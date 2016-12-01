@@ -6,7 +6,15 @@ package com.bastian.findyousport.models;
 
     public class Event {
 
-    private String uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook;
+    private String uid;
+    private String nameLocal;
+    private String sportName;
+    private String price;
+    private String schedules;
+    private String location;
+    private String phoneNum;
+    private String email;
+    private String facebook;
 
     public Event() {
     }
@@ -94,4 +102,5 @@ package com.bastian.findyousport.models;
     public void setFacebook(String facebook) {
         this.facebook = facebook;
     }
+
 }

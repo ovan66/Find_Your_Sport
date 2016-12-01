@@ -1,6 +1,7 @@
 package com.bastian.findyousport.views.main.sportList;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.models.Event;
+import com.bastian.findyousport.views.Constants;
+import com.bastian.findyousport.views.details.DetailsActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
@@ -22,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
  * A simple {@link Fragment} subclass.
  */
 public class SportListFragment extends Fragment {
-
 
     public SportListFragment() {
         // Required empty public constructor
@@ -32,7 +34,6 @@ public class SportListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sport_list, container, false);
     }
 
@@ -44,8 +45,31 @@ public class SportListFragment extends Fragment {
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DatabaseReference reference = new FirebaseRef().events().child(new UserData().user().getUid());
-        //new FirebaseIndexListAdapter<Event>(this, Event.class, R.layout.list_item_post, reference)
+        DatabaseReference userData = new FirebaseRef().events();
+
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_post, EventHolder.class, userData) {
+            @Override
+            protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
+                viewHolder.setName(model.getSportName());
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                        intent.putExtra(Constants.NAME_LOCAL, model.getNameLocal());
+                        intent.putExtra(Constants.SPORT_NAME, model.getSportName());
+                        intent.putExtra(Constants.PRICE, model.getPrice());
+                        intent.putExtra(Constants.SCHEDULES, model.getSchedules());
+                        intent.putExtra(Constants.LOCATION, model.getLocation());
+                        intent.putExtra(Constants.PHONE_NUM, model.getPhoneNum());
+                        intent.putExtra(Constants.FACEBOOK, model.getFacebook());
+                        intent.putExtra(Constants.EMAIL, model.getEmail());
+                        startActivity(intent);
+                    }
+                });
+            }
+        };
+
+        recycler.setAdapter(adapter);
     }
 
     public static class EventHolder extends RecyclerView.ViewHolder {
@@ -58,10 +82,6 @@ public class SportListFragment extends Fragment {
         public void setName(String name){
             TextView textView = (TextView) itemView.findViewById(R.id.reciverSportTv);
             textView.setText(name);
-
-        }
-
-        public void setClick (String eventId){
 
         }
     }
