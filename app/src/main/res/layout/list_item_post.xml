@@ -5,9 +5,12 @@
     android:orientation="horizontal">
 
     <TextView
+        android:padding="16dp"
+        android:text="texto de ejemplo"
         android:id="@+id/reciverSportTv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_border_bottom"/>
 
 </LinearLayout>

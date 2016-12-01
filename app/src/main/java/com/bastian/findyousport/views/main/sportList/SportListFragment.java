@@ -74,7 +74,6 @@ public class SportListFragment extends Fragment {
 
     public static class EventHolder extends RecyclerView.ViewHolder {
 
-
         public EventHolder(View itemView) {
             super(itemView);
         }
