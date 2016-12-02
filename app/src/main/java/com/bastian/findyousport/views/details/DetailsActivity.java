@@ -11,12 +11,14 @@ import android.widget.Toast;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
-import com.bastian.findyousport.views.Constants;
+import com.bastian.findyousport.views.sports.sportList.SportListFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -27,42 +29,42 @@ public class DetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*Event event = (Event) getIntent().getSerializableExtra("EVENT");
-        Toast.makeText(this, event.getSportName(), Toast.LENGTH_SHORT).show();*/
+        Event event = (Event) getIntent().getSerializableExtra(SportListFragment.EVENT);
+        Toast.makeText(this, event.getSportName(), Toast.LENGTH_SHORT).show();
 
-        final String nameLocal = getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String nameLocal = event.getNameLocal();
         TextView nameLocalTv = (TextView) findViewById(R.id.reciverNameLocalTv);
         nameLocalTv.setText(nameLocal);
 
-        final String sportName = getIntent().getStringExtra(Constants.SPORT_NAME);
+        final String sportName = event.getSportName();
         TextView sportNameTv = (TextView) findViewById(R.id.reciverSportNameTv);
         sportNameTv.setText(sportName);
 
-        final String price = getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String price = event.getPrice();
         TextView priceTv= (TextView) findViewById(R.id.reciverPriceTv);
         priceTv.setText(price);
 
-        final String schedules = getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String schedules = event.getSchedules();
         TextView schedulesTv = (TextView) findViewById(R.id.reciverSchedulesTv);
         schedulesTv.setText(schedules);
 
-        final String location= getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String location= event.getLocation();
         TextView locationTv = (TextView) findViewById(R.id.reciverLocationTv);
         locationTv.setText(location);
 
-        final String phoneNum= getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String phoneNum= event.getPhoneNum();
         TextView phoneNumTv = (TextView) findViewById(R.id.reciverPhoneNumTv);
         phoneNumTv.setText(phoneNum);
 
-        final String facebook = getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String facebook = event.getFacebook();
         TextView facebookTv = (TextView) findViewById(R.id.reciverFacebookTv);
         facebookTv.setText(facebook);
 
-        final String email = getIntent().getStringExtra(Constants.NAME_LOCAL);
+        final String email = event.getEmail();
         TextView emailTv = (TextView) findViewById(R.id.reciverEmailTv);
         emailTv.setText(email);
 
-        final String key = getIntent().getStringExtra(Constants.KEY);
+        final String key = event.getKey();
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         DatabaseReference reference = new FirebaseRef().favorites().child(key);

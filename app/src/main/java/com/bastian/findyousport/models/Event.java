@@ -8,7 +8,7 @@ import java.util.List;
  * Created by santo_000 on 29-11-2016.
  */
 
-    public class Event {
+    public class Event implements Serializable {
 
     private String uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, category;
 
