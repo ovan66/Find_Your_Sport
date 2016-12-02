@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,13 +46,14 @@ public class SportListFragment extends Fragment {
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY).toUpperCase();
+        String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY);
 
-        DatabaseReference userData = new FirebaseRef().events(category);
+        DatabaseReference reference = new FirebaseRef().events(category);
 
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_post, EventHolder.class, userData) {
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_post, EventHolder.class, reference) {
             @Override
             protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
+                Log.d("ADAPTER", model.getEmail());
                 viewHolder.setName(model.getSportName());
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -66,6 +68,7 @@ public class SportListFragment extends Fragment {
                         intent.putExtra(Constants.FACEBOOK, model.getFacebook());
                         intent.putExtra(Constants.EMAIL, model.getEmail());
                         intent.putExtra(Constants.KEY, model.getKey());
+                        /*intent.putExtra("EVENT", model);*/
                         startActivity(intent);
 
                     }

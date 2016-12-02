@@ -27,6 +27,9 @@ public class DetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*Event event = (Event) getIntent().getSerializableExtra("EVENT");
+        Toast.makeText(this, event.getSportName(), Toast.LENGTH_SHORT).show();*/
+
         final String nameLocal = getIntent().getStringExtra(Constants.NAME_LOCAL);
         TextView nameLocalTv = (TextView) findViewById(R.id.reciverNameLocalTv);
         nameLocalTv.setText(nameLocal);
@@ -67,9 +70,9 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
-                    Toast.makeText(DetailsActivity.this, "Lo tiene", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(DetailsActivity.this, "Lo tiene", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(DetailsActivity.this, "No lo tiene", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(DetailsActivity.this, "No lo tiene", Toast.LENGTH_SHORT).show();
                 }
             }
 
