@@ -56,15 +56,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        setUserData();
+        setUserData(navigationView);
     }
 
-    private void setUserData(){
+    private void setUserData(NavigationView navigationView){
         FirebaseUser user = new UserData().user();
-        TextView textView = (TextView) findViewById(R.id.userNick);
-        textView.setText(user.getDisplayName());
+        TextView userNickMenu = (TextView) findViewById(R.id.userNick);
+        String userName = user.getDisplayName();
+        userNickMenu.setText(userName);
         CircularImageView circularImageView = (CircularImageView) findViewById(R.id.userAvatar);
         Picasso.with(this).load(user.getPhotoUrl()).into(circularImageView);
+        View header = navigationView.getHeaderView(0);
+        CircularImageView drawerAvatar = (CircularImageView) header.findViewById(R.id.userAvatarDrawer);
+        Picasso.with(this).load(user.getPhotoUrl()).into(drawerAvatar);
+        TextView userNickDrawer = (TextView) header.findViewById(R.id.userName);
+        userNickDrawer.setText(userName);
+
     }
 
     @Override
