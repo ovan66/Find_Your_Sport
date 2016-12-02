@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.main.sportList;
+package com.bastian.findyousport.views.sports.sportList;
 
 
 import android.content.Intent;
@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
-import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.models.Event;
 import com.bastian.findyousport.views.Constants;
 import com.bastian.findyousport.views.details.DetailsActivity;
+import com.bastian.findyousport.views.main.categoryList.CategoriesFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
@@ -45,7 +45,9 @@ public class SportListFragment extends Fragment {
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DatabaseReference userData = new FirebaseRef().events();
+        String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY).toUpperCase();
+
+        DatabaseReference userData = new FirebaseRef().events(category);
 
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_post, EventHolder.class, userData) {
             @Override

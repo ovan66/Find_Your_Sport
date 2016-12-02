@@ -1,6 +1,7 @@
 package com.bastian.findyousport.views.main.categoryList;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,11 +15,14 @@ import android.widget.Toast;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.adapters.CategoriesAdapter;
 import com.bastian.findyousport.adapters.CategoriesClickListener;
+import com.bastian.findyousport.views.sports.SportsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CategoriesFragment extends Fragment implements CategoriesClickListener {
+
+    public static final String CATEGORY = "com.bastian.findyousport.views.main.categoryList.CATEGORY";
 
 
     public CategoriesFragment() {
@@ -49,8 +53,8 @@ public class CategoriesFragment extends Fragment implements CategoriesClickListe
 
     @Override
     public void click(String category) {
-
-        Toast.makeText(getContext(), category, Toast.LENGTH_SHORT).show();
-
+        Intent intent = new Intent(getActivity(), SportsActivity.class);
+        intent.putExtra(CATEGORY, category);
+        startActivity(intent);
     }
 }

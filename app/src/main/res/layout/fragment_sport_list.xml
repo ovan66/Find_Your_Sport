@@ -3,6 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_border_bottom"
-    tools:context="com.bastian.findyousport.views.main.sportList.SportListFragment">
+    tools:context=".views.sports.sportList.SportListFragment">
 
 </android.support.v7.widget.RecyclerView>

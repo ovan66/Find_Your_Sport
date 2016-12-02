@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
-import com.bastian.findyousport.views.main.sportList.SportListFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 

@@ -9,22 +9,12 @@ import java.util.List;
 
     public class Event {
 
-    private String uid;
-    private String nameLocal;
-    private String sportName;
-    private String price;
-    private String schedules;
-    private String location;
-    private String phoneNum;
-    private String email;
-    private String facebook;
-    private String key;
-    private List<String> favorites = new ArrayList<>();
+    private String uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, category;
 
     public Event() {
     }
 
-    public Event(String uid, String nameLocal, String sportName, String price, String schedules, String location, String phoneNum, String email, String facebook) {
+    public Event(String uid, String nameLocal, String sportName, String price, String schedules, String location, String phoneNum, String email, String facebook, String key, String category) {
         this.uid = uid;
         this.nameLocal = nameLocal;
         this.sportName = sportName;
@@ -34,6 +24,8 @@ import java.util.List;
         this.phoneNum = phoneNum;
         this.email = email;
         this.facebook = facebook;
+        this.key = key;
+        this.category = category;
     }
 
     public String getUid() {
@@ -114,5 +106,13 @@ import java.util.List;
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

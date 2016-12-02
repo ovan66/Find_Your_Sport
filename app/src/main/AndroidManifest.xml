@@ -40,7 +40,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".views.main.favoriteList.FavoriteListActivity"></activity>
+        <activity android:name=".views.main.favoriteList.FavoriteListActivity" />
+        <activity android:name=".views.sports.SportsActivity"></activity>
     </application>
 
 </manifest>

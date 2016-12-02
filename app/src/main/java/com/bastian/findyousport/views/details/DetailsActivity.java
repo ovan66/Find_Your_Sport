@@ -1,18 +1,10 @@
 package com.bastian.findyousport.views.details;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,23 +12,11 @@ import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
 import com.bastian.findyousport.views.Constants;
-import com.bastian.findyousport.views.main.sportList.SportListFragment;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-
-import static android.R.attr.inAnimation;
-import static android.R.attr.key;
-import static com.bastian.findyousport.R.id.fab;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -105,8 +85,8 @@ public class DetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 final DatabaseReference reference = new FirebaseRef().favorites();
-                Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook);
-                event.setKey(key);
+                //TODO warning category is not seted!!!!!
+                Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, "");
                 reference.child(key).setValue(event);
 
                 Toast.makeText(DetailsActivity.this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
