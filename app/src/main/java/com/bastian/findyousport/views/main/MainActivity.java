@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,18 +11,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.bastian.findyousport.R;
+import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.views.login.FullscreenActivity;
-
 import com.bastian.findyousport.views.main.createSport.CreateSportActivity;
 import com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity;
 import com.firebase.ui.auth.AuthUI;
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +50,21 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        toggle.setDrawerIndicatorEnabled(true);
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setUserData();
+    }
+
+    private void setUserData(){
+        FirebaseUser user = new UserData().user();
+        TextView textView = (TextView) findViewById(R.id.userNick);
+        textView.setText(user.getDisplayName());
+        CircularImageView circularImageView = (CircularImageView) findViewById(R.id.userAvatar);
+        Picasso.with(this).load(user.getPhotoUrl()).into(circularImageView);
     }
 
     @Override
