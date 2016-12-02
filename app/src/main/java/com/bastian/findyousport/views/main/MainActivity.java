@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.views.login.FullscreenActivity;
+
 import com.bastian.findyousport.views.main.createSport.CreateSportActivity;
 import com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity;
 import com.firebase.ui.auth.AuthUI;

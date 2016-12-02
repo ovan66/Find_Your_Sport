@@ -8,4 +8,4 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.bastian.findyousport.views.main.MainActivity"
     tools:showIn="@layout/app_bar_main"
-    android:name="com.bastian.findyousport.views.main.sportList.SportListFragment"/>
+    android:name="com.bastian.findyousport.views.main.categoryList.CategoriesFragment"/>
