@@ -22,7 +22,6 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
 
     @Override
     public void loged() {
-        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
@@ -34,7 +33,6 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setProviders(
-                                AuthUI.EMAIL_PROVIDER,
                                 AuthUI.GOOGLE_PROVIDER,
                                 AuthUI.FACEBOOK_PROVIDER)
                         .setTheme(R.style.FullscreenTheme)
