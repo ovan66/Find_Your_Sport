@@ -63,7 +63,9 @@ public class SportListFragment extends Fragment {
                         intent.putExtra(Constants.PHONE_NUM, model.getPhoneNum());
                         intent.putExtra(Constants.FACEBOOK, model.getFacebook());
                         intent.putExtra(Constants.EMAIL, model.getEmail());
+                        intent.putExtra(Constants.KEY, model.getKey());
                         startActivity(intent);
+
                     }
                 });
             }
@@ -81,7 +83,6 @@ public class SportListFragment extends Fragment {
         public void setName(String name){
             TextView textView = (TextView) itemView.findViewById(R.id.reciverSportTv);
             textView.setText(name);
-
         }
     }
 }

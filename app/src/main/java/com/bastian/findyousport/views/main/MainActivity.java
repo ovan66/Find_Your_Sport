@@ -15,7 +15,8 @@ import android.view.MenuItem;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.views.login.FullscreenActivity;
-import com.bastian.findyousport.views.main.CreateSport.CreateSportActivity;
+import com.bastian.findyousport.views.main.createSport.CreateSportActivity;
+import com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity
             //TODO deben servir como filtros, deben cambiar la lista a las publicaciones hechas por mi
 
         } else if (id == R.id.favSport) {
-            //TODO deben servir como filtros, deben cambiar la lista a mis deportes favoritos
+            Intent intent = new Intent(MainActivity.this, FavoriteListActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.logout) {
             logout();

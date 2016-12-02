@@ -1,5 +1,6 @@
 package com.bastian.findyousport.data;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,7 +19,8 @@ public class FirebaseRef {
     }
 
     public DatabaseReference favorites(){
-        return root().child("favorites");
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        return root().child("favorites").child(uid);
     }
 
 }

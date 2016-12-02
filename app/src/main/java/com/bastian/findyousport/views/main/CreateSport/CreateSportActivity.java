@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.main.CreateSport;
+package com.bastian.findyousport.views.main.createSport;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,10 +45,9 @@ public class CreateSportActivity extends AppCompatActivity {
 
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook);
-                reference.push().setValue(event);
-
-
-
+                String key = reference.push().getKey();
+                event.setKey(key);
+                reference.child(key).setValue(event);
 
 
                 //TODO the events owned by the user are set for the next iteration

@@ -14,5 +14,6 @@ public class Constants {
     public static final String LOCATION ="LOCATION";
     public static final String PHONE_NUM = "PHONE_NUM";
     public static final String FACEBOOK = "FACEBOOK";
+    public static final String KEY = "KEY";
 
 }

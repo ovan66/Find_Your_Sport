@@ -1,5 +1,8 @@
 package com.bastian.findyousport.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by santo_000 on 29-11-2016.
  */
@@ -15,6 +18,8 @@ package com.bastian.findyousport.models;
     private String phoneNum;
     private String email;
     private String facebook;
+    private String key;
+    private List<String> favorites = new ArrayList<>();
 
     public Event() {
     }
@@ -103,4 +108,11 @@ package com.bastian.findyousport.models;
         this.facebook = facebook;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 }
