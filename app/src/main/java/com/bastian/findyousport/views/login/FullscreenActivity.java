@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.bastian.findyousport.R;
+import com.bastian.findyousport.views.create.SteperActivity;
 import com.bastian.findyousport.views.main.MainActivity;
 import com.firebase.ui.auth.AuthUI;
 
@@ -17,7 +18,8 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
-        new LoginValidation(this).init();
+        startActivity(new Intent(this, SteperActivity.class));
+        //new LoginValidation(this).init();
     }
 
     @Override

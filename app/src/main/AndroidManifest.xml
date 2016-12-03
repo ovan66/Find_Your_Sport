@@ -7,12 +7,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".application.SportApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".application.SportApp">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".views.login.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -42,7 +42,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".views.main.favoriteList.FavoriteListActivity" />
-        <activity android:name=".views.sports.SportsActivity"></activity>
+        <activity android:name=".views.sports.SportsActivity" />
+        <activity android:name=".views.create.SteperActivity"></activity>
     </application>
 
 </manifest>

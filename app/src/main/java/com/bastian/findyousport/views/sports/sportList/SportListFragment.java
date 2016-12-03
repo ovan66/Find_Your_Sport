@@ -75,7 +75,7 @@ public class SportListFragment extends Fragment {
         }
 
         public void setName(String name){
-            TextView textView = (TextView) itemView.findViewById(R.id.reciverSportTv);
+            TextView textView = (TextView) itemView.findViewById(R.id.nameSportCardTv);
             textView.setText(name);
         }
     }

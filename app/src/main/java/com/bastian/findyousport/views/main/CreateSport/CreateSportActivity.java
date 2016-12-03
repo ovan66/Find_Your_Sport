@@ -43,7 +43,6 @@ public class CreateSportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameLocal = ((EditText)findViewById(R.id.nameLocalEt)).getText().toString();
                 String sportName  = ((EditText)findViewById(R.id.nameSportEt)).getText().toString();
-
                 String price = ((EditText)findViewById(R.id.priceEt)).getText().toString();
                 String schedules = ((EditText)findViewById(R.id.schedulesEt)).getText().toString();
                 String location = ((EditText)findViewById(R.id.locationEt)).getText().toString();
