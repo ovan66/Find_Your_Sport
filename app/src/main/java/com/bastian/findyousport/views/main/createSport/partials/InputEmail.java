@@ -30,8 +30,8 @@ public class InputEmail extends InputText {
             public void afterTextChanged(Editable s) {
                 if (s.toString().trim().length() > 0
                         &&  !s.toString().contains(" ")
-                        &&  !s.toString().contains(".")
-                        &&  !s.toString().contains("@")) {
+                        &&  s.toString().contains(".")
+                        &&  s.toString().contains("@")) {
                     callback.stepperSucces();
                 } else {
                         callback.stepperError("Nombre muy corto");

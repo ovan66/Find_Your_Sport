@@ -73,7 +73,6 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
             case 2:
                 price = new InputNumber(this);
                 price.setHint("Precios");
-                price.setValidator();
                 view = price;
                 break;
 
@@ -92,7 +91,6 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
             case 5:
                 quotas = new InputNumber(this);
                 quotas.setHint("Cupos");
-                quotas.setValidator();
                 view = quotas;
                 break;
 
