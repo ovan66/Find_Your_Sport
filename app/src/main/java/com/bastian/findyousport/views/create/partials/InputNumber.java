@@ -1,9 +1,7 @@
-package com.bastian.findyousport.views.main.createSport.partials;
+package com.bastian.findyousport.views.create.partials;
 
 import android.content.Context;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 
 /**
  * Created by santo_000 on 05-12-2016.

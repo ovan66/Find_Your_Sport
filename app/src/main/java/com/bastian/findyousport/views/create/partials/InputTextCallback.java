@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.main.createSport.partials;
+package com.bastian.findyousport.views.create.partials;
 
 /**
  * Created by santo_000 on 05-12-2016.

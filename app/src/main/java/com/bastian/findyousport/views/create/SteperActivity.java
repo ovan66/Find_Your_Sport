@@ -1,32 +1,31 @@
 package com.bastian.findyousport.views.create;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.views.main.createSport.partials.InputEmail;
-import com.bastian.findyousport.views.main.createSport.partials.InputNumber;
-import com.bastian.findyousport.views.main.createSport.partials.InputText;
-import com.bastian.findyousport.views.main.createSport.partials.InputTextCallback;
+import com.bastian.findyousport.views.create.partials.InputEmail;
+import com.bastian.findyousport.views.create.partials.InputNumber;
+import com.bastian.findyousport.views.create.partials.InputText;
+import com.bastian.findyousport.views.create.partials.InputTextCallback;
+import com.bastian.findyousport.views.create.partials.VacantsPiker;
+import com.shawnlin.numberpicker.NumberPicker;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
 
-import static android.R.id.input;
-
 public class SteperActivity extends AppCompatActivity implements VerticalStepperForm, InputTextCallback {
 
     private EditText  schedules, location, facebook;
-    private InputText institutionName, sportName, quotas;
+    private InputText institutionName, sportName;
+    private NumberPicker vacantsPicker;
     private InputNumber price, phoneNum;
     private InputEmail email;
     private VerticalStepperFormLayout verticalStepperForm;
@@ -89,9 +88,10 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 break;
 
             case 5:
-                quotas = new InputNumber(this);
-                quotas.setHint("Cupos");
-                view = quotas;
+                VacantsPiker vacantWrapper = new VacantsPiker(this);
+                vacantsPicker = vacantWrapper.getView(this);
+                vacantWrapper.setListener();
+                view = vacantsPicker;
                 break;
 
             case 6:
@@ -138,7 +138,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 break;
 
             case 2:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
+                verticalStepperForm.setActiveStepAsCompleted();
                 break;
 
             case 3:

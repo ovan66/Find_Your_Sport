@@ -1,27 +1,19 @@
-package com.bastian.findyousport.views.main.createSport.partials;
+package com.bastian.findyousport.views.create.partials;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
 /**
  * Created by santo_000 on 05-12-2016.
  */
 
-public class InputText extends EditText {
-
-    protected InputTextCallback callback;
-
-    public InputText(Context context) {
+public class InputEmail extends InputText {
+    public InputEmail(Context context) {
         super(context);
-        this.callback = (InputTextCallback) context;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        setLayoutParams(layoutParams);
-
     }
 
+    @Override
     public void setValidator() {
         addTextChangedListener(new TextWatcher() {
             @Override
@@ -36,19 +28,16 @@ public class InputText extends EditText {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int size = s.length();
-                if (size >= 3 && size < 40) {
+                if (s.toString().trim().length() > 0
+                        &&  !s.toString().contains(" ")
+                        &&  s.toString().contains(".")
+                        &&  s.toString().contains("@")) {
                     callback.stepperSucces();
                 } else {
-                    if (size < 3) {
                         callback.stepperError("Nombre muy corto");
-                    } else {
-                        callback.stepperError("Nombre muy largo");
                     }
                 }
             }
-        });
+        );
     }
-
-
 }

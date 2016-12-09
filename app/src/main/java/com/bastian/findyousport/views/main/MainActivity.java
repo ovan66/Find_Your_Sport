@@ -18,7 +18,6 @@ import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.views.login.FullscreenActivity;
 
-import com.bastian.findyousport.views.main.createSport.CreateSportActivity;
 import com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.github.siyamed.shapeimageview.CircularImageView;
@@ -40,8 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreateSportActivity.class);
-                startActivity(intent);
+
             }
         });
 
