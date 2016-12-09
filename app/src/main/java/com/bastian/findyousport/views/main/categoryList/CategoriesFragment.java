@@ -48,7 +48,6 @@ public class CategoriesFragment extends Fragment implements CategoriesClickListe
         CategoriesAdapter adapter = new CategoriesAdapter(this, getActivity().getResources().getStringArray(R.array.categories_array));
         recycler.setAdapter(adapter);
 
-
     }
 
     @Override

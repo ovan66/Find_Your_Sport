@@ -18,8 +18,7 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
-        startActivity(new Intent(this, SteperActivity.class));
-        //new LoginValidation(this).init();
+        new LoginValidation(this).init();
     }
 
     @Override

@@ -117,13 +117,6 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         return view;
     }
 
-    private View input(String hint) {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.partial_steper_field, null, false);
-        TextInputLayout textInputLayout = (TextInputLayout) view.findViewById(R.id.hintLayout);
-        textInputLayout.setHint(hint);
-        return view;
-    }
 
 
     @Override
@@ -171,6 +164,10 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
     @Override
     public void sendData() {
         Toast.makeText(this, "SEND DATA", Toast.LENGTH_SHORT).show();
+    }
+
+    private void run(){
+
     }
 
     @Override

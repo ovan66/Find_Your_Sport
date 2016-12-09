@@ -48,7 +48,8 @@ public class SportListFragment extends Fragment {
 
         DatabaseReference reference = new FirebaseRef().events(category);
 
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_post, EventHolder.class, reference) {
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>
+                (Event.class, R.layout.list_item_post, EventHolder.class, reference) {
             @Override
             protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
                 Log.d("ADAPTER", model.getEmail());

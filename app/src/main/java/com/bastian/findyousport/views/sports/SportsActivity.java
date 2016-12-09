@@ -16,5 +16,7 @@ public class SportsActivity extends AppCompatActivity {
         String category = getIntent().getStringExtra(CategoriesFragment.CATEGORY).toUpperCase();
         getSupportActionBar().setTitle(category);
 
+
+
     }
 }
