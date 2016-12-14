@@ -8,7 +8,7 @@
     app:np_width="64dp"
     app:np_height="180dp"
     app:np_dividerColor="@color/colorPrimary"
-    app:np_max="59"
+    app:np_max="100"
     app:np_min="0"
     app:np_textColor="@color/colorPrimary"
     app:np_textSize="24sp"/>

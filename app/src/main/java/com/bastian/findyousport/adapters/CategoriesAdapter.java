@@ -50,7 +50,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             case 1:
                 photo.setImageResource(R.mipmap.login_background);
             case 2:
-
+                photo.setImageResource(R.mipmap.login_background);
         }
 
         ImageView icon = holder.icon;
