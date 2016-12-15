@@ -13,6 +13,10 @@ public class UserData {
         return FirebaseAuth.getInstance().getCurrentUser();
     }
 
+    public String uid(){
+        return user().getUid();
+    }
+
     public String email(){
         return user().getEmail();
     }

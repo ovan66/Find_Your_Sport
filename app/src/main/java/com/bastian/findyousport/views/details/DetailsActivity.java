@@ -68,13 +68,11 @@ public class DetailsActivity extends AppCompatActivity {
         final FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
         final FloatingActionButton fabDeleted = (FloatingActionButton) findViewById(R.id.fabDelete);
 
-
         DatabaseReference reference = new FirebaseRef().favorites().child(key);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
-                    //Toast.makeText(DetailsActivity.this, "Lo tiene", Toast.LENGTH_SHORT).show();
                     fabDeleted.setVisibility(View.VISIBLE);
                     fabAdd.setVisibility(View.GONE);
                     fabDeleted.setOnClickListener(new View.OnClickListener() {
@@ -83,14 +81,11 @@ public class DetailsActivity extends AppCompatActivity {
                             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             final DatabaseReference reference = new FirebaseRef().favorites();
                             //TODO warning category is not seted!!!!!
-                            Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, "");
-                            reference.child(key).setValue(event);
-
-                            Toast.makeText(DetailsActivity.this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
+                            reference.child(key).removeValue();
+                            Toast.makeText(DetailsActivity.this, "eliminado de favoritos", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
-                    //Toast.makeText(DetailsActivity.this, "No lo tiene", Toast.LENGTH_SHORT).show();
                     fabDeleted.setVisibility(View.GONE);
                     fabAdd.setVisibility(View.VISIBLE);
                     fabDeleted.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +96,6 @@ public class DetailsActivity extends AppCompatActivity {
                             //TODO warning category is not seted!!!!!
                             Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, "");
                             reference.child(key).setValue(event);
-
                             Toast.makeText(DetailsActivity.this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
                         }
                     });

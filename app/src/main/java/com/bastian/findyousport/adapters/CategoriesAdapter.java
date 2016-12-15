@@ -47,19 +47,25 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         switch (position) {
             case 0:
                 photo.setImageResource(R.mipmap.crossfit_wallpaper);
+                break;
             case 1:
                 photo.setImageResource(R.mipmap.login_background);
+                break;
             case 2:
                 photo.setImageResource(R.mipmap.login_background);
+                break;
         }
 
         ImageView icon = holder.icon;
         switch (position) {
             case 0:
                 icon.setImageResource(R.mipmap.corssfit_icon_1);
+                break;
             case 1:
+                break;
 
             case 2:
+                break;
 
         }
     }

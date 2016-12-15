@@ -34,7 +34,7 @@ public class InputEmail extends InputText {
                         &&  s.toString().contains("@")) {
                     callback.stepperSucces();
                 } else {
-                        callback.stepperError("Nombre muy corto");
+                        callback.stepperError("Email invalido");
                     }
                 }
             }

@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import com.bastian.findyousport.R;
 import com.shawnlin.numberpicker.NumberPicker;
 
-import java.util.zip.Inflater;
-
 /**
  * Created by santo_000 on 07-12-2016.
  */
@@ -15,9 +13,9 @@ import java.util.zip.Inflater;
 public class VacantsPiker {
 
     private NumberPicker numberPicker;
-    private InputTextCallback callback;
+    private PartialCallback callback;
 
-    public VacantsPiker(InputTextCallback callback) {
+    public VacantsPiker(PartialCallback callback) {
         this.callback = callback;
     }
 

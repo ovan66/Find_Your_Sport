@@ -12,12 +12,13 @@ import android.widget.LinearLayout;
 
 public class InputText extends EditText {
 
-    protected InputTextCallback callback;
+    protected PartialCallback callback;
 
     public InputText(Context context) {
         super(context);
-        this.callback = (InputTextCallback) context;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        this.callback = (PartialCallback) context;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         setLayoutParams(layoutParams);
 
     }
@@ -49,6 +50,4 @@ public class InputText extends EditText {
             }
         });
     }
-
-
 }

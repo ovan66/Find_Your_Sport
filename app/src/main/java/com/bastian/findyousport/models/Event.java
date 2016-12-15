@@ -1,5 +1,12 @@
 package com.bastian.findyousport.models;
 
+import android.widget.EditText;
+
+import com.bastian.findyousport.views.create.partials.InputEmail;
+import com.bastian.findyousport.views.create.partials.InputNumber;
+import com.bastian.findyousport.views.create.partials.InputText;
+import com.bastian.findyousport.views.create.partials.SpinnerCategories;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +17,13 @@ import java.util.List;
 
     public class Event implements Serializable {
 
-    private String uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, category;
+    private String uid, nameLocal, sportName, schedules, location, email, facebook, key, category;
+    private int price, phoneNum;
 
     public Event() {
     }
 
-    public Event(String uid, String nameLocal, String sportName, String price, String schedules, String location, String phoneNum, String email, String facebook, String key, String category) {
+    public Event(String uid, String nameLocal, String sportName, int price, String category, String schedules, String location, int phoneNum, String email, String facebook, String key) {
         this.uid = uid;
         this.nameLocal = nameLocal;
         this.sportName = sportName;
@@ -27,6 +35,9 @@ import java.util.List;
         this.facebook = facebook;
         this.key = key;
         this.category = category;
+    }
+
+    public Event(String uid, InputText institutionName, InputText sportName, InputNumber price, SpinnerCategories category, EditText schedules, EditText location, InputNumber phoneNum, InputEmail email, EditText facebook, String key) {
     }
 
     public String getUid() {
@@ -53,13 +64,6 @@ import java.util.List;
         this.sportName = sportName;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 
     public String getSchedules() {
         return schedules;
@@ -77,13 +81,6 @@ import java.util.List;
         this.location = location;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
 
     public String getEmail() {
         return email;
@@ -115,5 +112,21 @@ import java.util.List;
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(int phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }
