@@ -6,6 +6,7 @@ import com.bastian.findyousport.views.create.partials.InputEmail;
 import com.bastian.findyousport.views.create.partials.InputNumber;
 import com.bastian.findyousport.views.create.partials.InputText;
 import com.bastian.findyousport.views.create.partials.SpinnerCategories;
+import com.bastian.findyousport.views.create.partials.VacantsPiker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,26 +19,27 @@ import java.util.List;
     public class Event implements Serializable {
 
     private String uid, nameLocal, sportName, schedules, location, email, facebook, key, category;
-    private int price, phoneNum;
+    private int price, phoneNum, vacants;
 
     public Event() {
     }
 
-    public Event(String uid, String nameLocal, String sportName, int price, String category, String schedules, String location, int phoneNum, String email, String facebook, String key) {
-        this.uid = uid;
-        this.nameLocal = nameLocal;
-        this.sportName = sportName;
-        this.price = price;
-        this.schedules = schedules;
-        this.location = location;
+    public Event(int phoneNum, int price, int vacants, String category, String key, String facebook, String email, String location, String schedules, String sportName, String nameLocal, String uid) {
         this.phoneNum = phoneNum;
-        this.email = email;
-        this.facebook = facebook;
-        this.key = key;
+        this.price = price;
+        this.vacants = vacants;
         this.category = category;
+        this.key = key;
+        this.facebook = facebook;
+        this.email = email;
+        this.location = location;
+        this.schedules = schedules;
+        this.sportName = sportName;
+        this.nameLocal = nameLocal;
+        this.uid = uid;
     }
 
-    public Event(String uid, InputText institutionName, InputText sportName, InputNumber price, SpinnerCategories category, EditText schedules, EditText location, InputNumber phoneNum, InputEmail email, EditText facebook, String key) {
+    public Event(String uid, InputText institutionName, InputText sportName, InputNumber price, SpinnerCategories category, EditText schedules, EditText location, InputNumber phoneNum, InputEmail email, EditText facebook, String key, int vacants) {
     }
 
     public String getUid() {
@@ -128,5 +130,13 @@ import java.util.List;
 
     public void setPhoneNum(int phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public int getVacants() {
+        return vacants;
+    }
+
+    public void setVacants(int vacants) {
+        this.vacants = vacants;
     }
 }

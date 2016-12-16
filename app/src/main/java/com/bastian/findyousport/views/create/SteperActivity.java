@@ -202,14 +202,14 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         DatabaseReference databaseReference = new FirebaseRef().events(category);
         //TODO initiallizae the model correctly
         String key = databaseReference.push().getKey();
-        Event event = new Event(uid, institution, sport, priceSport, category, schedulesClass, locationinstitution, phoneNumber, emailInstitution, facebookInstitution, key);
+        /*Event event = new Event(uid, institution, sport, priceSport, category, schedulesClass, locationinstitution, phoneNumber, emailInstitution, facebookInstitution, key, vanants);
         databaseReference.child(key).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
             }
         });
-        Toast.makeText(this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();*/
     }
 
 

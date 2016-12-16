@@ -40,7 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView sportNameTv = (TextView) findViewById(R.id.reciverSportNameTv);
         sportNameTv.setText(sportName);
 
-        final String price = event.getPrice();
+        final int price = event.getPrice();
         TextView priceTv= (TextView) findViewById(R.id.reciverPriceTv);
         priceTv.setText(price);
 
@@ -52,7 +52,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView locationTv = (TextView) findViewById(R.id.reciverLocationTv);
         locationTv.setText(location);
 
-        final String phoneNum= event.getPhoneNum();
+        final int phoneNum = event.getPhoneNum();
         TextView phoneNumTv = (TextView) findViewById(R.id.reciverPhoneNumTv);
         phoneNumTv.setText(phoneNum);
 
@@ -94,7 +94,7 @@ public class DetailsActivity extends AppCompatActivity {
                             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             final DatabaseReference reference = new FirebaseRef().favorites();
                             //TODO warning category is not seted!!!!!
-                            Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key, "");
+                            Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key,);
                             reference.child(key).setValue(event);
                             Toast.makeText(DetailsActivity.this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
                         }
