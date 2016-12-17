@@ -14,6 +14,7 @@ public class InputText extends EditText {
 
     protected PartialCallback callback;
 
+
     public InputText(Context context) {
         super(context);
         this.callback = (PartialCallback) context;

@@ -46,7 +46,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
 
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.createForm);
 
-        String[] mySteps = {"Nombre de la Institución", "Nombre del Deporte", "Categories", "Precio", "Horarios",
+        String[] mySteps = {"Nombre de la Institución", "Nombre del Deporte", "Categoria", "Precio", "Horarios",
                 "Ubicacion", "Cupos", "Numero de contacto", "email", "facebook"};
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
@@ -193,7 +193,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         String category = spinnerCategories.getSelectedItem().toString();
         String schedulesClass = schedules.getText().toString();
         String locationinstitution = location.getText().toString();
-        int vanants = vacantsPicker.getValue();
+        int vacants = vacantsPicker.getValue();
         int phoneNumber = Integer.parseInt(phoneNum.getText().toString());
         String facebookInstitution = facebook.getText().toString();
         String emailInstitution = email.getText().toString();
@@ -202,14 +202,27 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         DatabaseReference databaseReference = new FirebaseRef().events(category);
         //TODO initiallizae the model correctly
         String key = databaseReference.push().getKey();
-        /*Event event = new Event(uid, institution, sport, priceSport, category, schedulesClass, locationinstitution, phoneNumber, emailInstitution, facebookInstitution, key, vanants);
+        Event event = new Event(
+                phoneNumber,
+                priceSport,
+                vacants,
+                category,
+                key,
+                facebookInstitution,
+                emailInstitution,
+                locationinstitution,
+                schedulesClass,
+                sport,
+                institution,
+                uid);
         databaseReference.child(key).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
+                Toast.makeText(SteperActivity.this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
+
             }
         });
-        Toast.makeText(this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();*/
     }
 
 

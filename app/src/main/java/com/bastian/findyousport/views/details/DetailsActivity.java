@@ -64,6 +64,13 @@ public class DetailsActivity extends AppCompatActivity {
         TextView emailTv = (TextView) findViewById(R.id.reciverEmailTv);
         emailTv.setText(email);
 
+        final int vacants = event.getVacants();
+        TextView vacantsTv = (TextView) findViewById(R.id.reciverVacantsTv);
+        vacantsTv.setText(vacants);
+
+        final String category = event.getCategory();
+
+
         final String key = event.getKey();
         final FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
         final FloatingActionButton fabDeleted = (FloatingActionButton) findViewById(R.id.fabDelete);
@@ -94,8 +101,8 @@ public class DetailsActivity extends AppCompatActivity {
                             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             final DatabaseReference reference = new FirebaseRef().favorites();
                             //TODO warning category is not seted!!!!!
-                            Event event = new Event(uid, nameLocal, sportName, price, schedules, location, phoneNum, email, facebook, key,);
-                            reference.child(key).setValue(event);
+                            //Event event = new Event(phoneNum, price, vacants, );
+                            //reference.child(key).setValue(event);
                             Toast.makeText(DetailsActivity.this, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
                         }
                     });
