@@ -8,15 +8,14 @@ import java.io.Serializable;
 
 public class OwnerUser implements Serializable{
 
-    private String uid, nameLocal, location, email, facebook, key, category;
-    private int phoneNum;
+    private String uid, nameLocal, location, email, facebook, key, category, Description, phoneNum;
 
 
     public OwnerUser() {
     }
 
 
-    public OwnerUser(String uid, String nameLocal, String location, String email, String facebook, String key, String category, int phoneNum) {
+    public OwnerUser(String uid, String nameLocal, String location, String email, String facebook, String key, String category, String description, String phoneNum) {
         this.uid = uid;
         this.nameLocal = nameLocal;
         this.location = location;
@@ -24,8 +23,8 @@ public class OwnerUser implements Serializable{
         this.facebook = facebook;
         this.key = key;
         this.category = category;
+        Description = description;
         this.phoneNum = phoneNum;
-
     }
 
     public String getUid() {
@@ -84,11 +83,19 @@ public class OwnerUser implements Serializable{
         this.category = category;
     }
 
-    public int getPhoneNum() {
+    public String getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum(int phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }

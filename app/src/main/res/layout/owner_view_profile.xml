@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_owner_create"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_withe"
+    android:orientation="vertical"
+    tools:context="com.bastian.findyousport.views.owner.OwnerCreateActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/login_background" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/reciverNameLocalTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_border_bottom"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:text="Nombre de la institucion"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Contacto"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/reciverPhoneNumTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:text="Telefono"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reciverEmailTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:text="Mail"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reciverLocationTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:text="Ubicacion"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/reciverFacebookTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_border_bottom"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:text="Facebook"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Descripcion"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/reciverDescriptionTv"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_border_bottom"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Escribe una descripcion"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:text="Clases"
+                android:textSize="20sp" />
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_margin="4dp"
+                card_view:cardBackgroundColor="@color/colorAccent"
+                card_view:cardCornerRadius="12dp"
+                card_view:cardPreventCornerOverlap="false">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/reciverSchedulesTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:text="Horario"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/reciverPriceTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reciverSchedulesTv"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:text="Precio"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/reciverProfesorTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/reciverPriceTv"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:text="Profesor"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

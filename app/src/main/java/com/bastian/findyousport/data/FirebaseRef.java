@@ -14,8 +14,12 @@ public class FirebaseRef {
         return FirebaseDatabase.getInstance().getReference();
     }
 
+    public DatabaseReference ownerProfiles(String category){
+        return root().child(category).child("ownerProfiles");
+    }
+
     public DatabaseReference events(String category){
-        return root().child("events").child(category);
+        return root().child(category).child("ownerProfiles").child("event");
     }
 
     public DatabaseReference favorites(){
