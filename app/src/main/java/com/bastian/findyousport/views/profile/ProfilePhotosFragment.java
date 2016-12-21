@@ -24,6 +24,7 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import java.util.ArrayList;
 
 import static android.R.attr.path;
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,12 +79,13 @@ public class ProfilePhotosFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        magicalCamera.resultPhoto(requestCode, resultCode, data);
-
-        Bitmap bitmap = magicalCamera.getPhoto();
-        String photoName = "yoursport_" + System.currentTimeMillis();
-        String path = magicalCamera.savePhotoInMemoryDevice(bitmap, photoName, "findyoursport", MagicalCamera.JPEG, false);
-        adapter.add(path);
+        if (RESULT_OK == resultCode) {
+            magicalCamera.resultPhoto(requestCode, resultCode, data);
+            Bitmap bitmap = magicalCamera.getPhoto();
+            String photoName = "yoursport_" + System.currentTimeMillis();
+            String path = magicalCamera.savePhotoInMemoryDevice(bitmap, photoName, "findyoursport", MagicalCamera.JPEG, false);
+            adapter.add(path);
+        }
         System.gc();
 
     }

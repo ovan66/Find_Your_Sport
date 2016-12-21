@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import static android.R.attr.path;
+
 /**
  * Created by cutiko on 21-12-16.
  */
@@ -38,7 +40,7 @@ public class ProfilePhotoAdapter extends RecyclerView.Adapter<ProfilePhotoAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Context context = holder.photo.getContext();
-        Picasso.with(context).load("file://"+paths.get(position)).fit().centerCrop().noFade().into(holder.photo);
+        Picasso.with(context).load(path(paths.get(position))).fit().centerCrop().noFade().into(holder.photo);
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +72,14 @@ public class ProfilePhotoAdapter extends RecyclerView.Adapter<ProfilePhotoAdapte
     public void add(String path) {
         paths.add(path);
         notifyDataSetChanged();
+    }
+
+    private String path(String path) {
+        if (path.contains("http://")) {
+            return path;
+        } else {
+            return "file://"+path;
+        }
     }
 
 
