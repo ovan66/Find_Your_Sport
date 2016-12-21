@@ -82,5 +82,7 @@ public class ProfilePhotoAdapter extends RecyclerView.Adapter<ProfilePhotoAdapte
         }
     }
 
-
+    public List<String> getPaths() {
+        return paths;
+    }
 }
