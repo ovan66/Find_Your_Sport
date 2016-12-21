@@ -35,7 +35,7 @@ public class FavoriteListActivity extends Activity {
 
             @Override
             protected void populateViewHolder(FavoriteHolder viewHolder, final Event model, int position) {
-                viewHolder.setName(model.getNameLocal());
+                viewHolder.setName(model.getName());
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -44,7 +44,7 @@ public class FavoriteListActivity extends Activity {
                         startActivity(intent);
 
                         DatabaseReference reference = new FirebaseRef().favorites();
-                        reference.child(model.getKey()).removeValue();
+                        //reference.child(model.getKey()).removeValue();
 
                     }
                 });

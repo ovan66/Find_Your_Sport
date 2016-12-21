@@ -10,16 +10,15 @@ import android.widget.Spinner;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
-import com.bastian.findyousport.models.OwnerUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-public class OwnerCreateActivity extends AppCompatActivity {
+public class CreateProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.owner_create_profile);
+        setContentView(R.layout.activity_create_profile);
         //TODO exist 3 views, we need to apply each view depending of the tipe of users or is actions
 
         Button publishBtn = (Button) findViewById(R.id.createProfileBtn);
@@ -47,9 +46,8 @@ public class OwnerCreateActivity extends AppCompatActivity {
                 String key = reference.push().getKey();
 
 
-                OwnerUser ownerUser = new OwnerUser(uid, nameLocal, location, email, facebook, key, category, descripcion, phoneNum);
-                ownerUser.setKey(key);
-                reference.child(key).setValue(ownerUser);
+                //Profile ownerUser = new Profile(uid, nameLocal, location, email, facebook, key, category, descripcion, phoneNum);
+                //reference.child(key).setValue(ownerUser);
 
 
                 //TODO we need to show the classes that the current ownerUser have created so far

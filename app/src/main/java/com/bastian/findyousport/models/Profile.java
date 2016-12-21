@@ -1,30 +1,30 @@
 package com.bastian.findyousport.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Bastian on 19-12-2016.
  */
 
-public class OwnerUser implements Serializable{
+public class Profile implements Serializable{
 
-    private String uid, nameLocal, location, email, facebook, key, category, Description, phoneNum;
+    private String uid, name, location, email, facebook, category, description, phoneNum, photo;
+    private List<String> photos;
 
-
-    public OwnerUser() {
-    }
-
-
-    public OwnerUser(String uid, String nameLocal, String location, String email, String facebook, String key, String category, String description, String phoneNum) {
+    public Profile(String uid, String name, String location, String email, String facebook, String category, String description, String phoneNum, List<String> photos) {
         this.uid = uid;
-        this.nameLocal = nameLocal;
+        this.name = name;
         this.location = location;
         this.email = email;
         this.facebook = facebook;
-        this.key = key;
         this.category = category;
-        Description = description;
+        this.description = description;
         this.phoneNum = phoneNum;
+        this.photos = photos;
+    }
+
+    public Profile() {
     }
 
     public String getUid() {
@@ -35,12 +35,12 @@ public class OwnerUser implements Serializable{
         this.uid = uid;
     }
 
-    public String getNameLocal() {
-        return nameLocal;
+    public String getName() {
+        return name;
     }
 
-    public void setNameLocal(String nameLocal) {
-        this.nameLocal = nameLocal;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {
@@ -67,14 +67,6 @@ public class OwnerUser implements Serializable{
         this.facebook = facebook;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -92,10 +84,27 @@ public class OwnerUser implements Serializable{
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
+    }
+
+    public List<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
+
+    public Profile getSimplified() {
+        Profile profile = new Profile();
+        profile.setName(getName());
+        profile.setLocation(getLocation());
+        profile.setUid(getUid());
+        profile.photo = getPhotos().get(0);
+        return profile;
     }
 }

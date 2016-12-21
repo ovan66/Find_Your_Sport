@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.views.main.MainActivity;
-import com.bastian.findyousport.views.owner.OwnerCreateActivity;
+import com.bastian.findyousport.views.owner.CreateProfileActivity;
 import com.firebase.ui.auth.AuthUI;
 
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
@@ -59,7 +59,7 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
                 .setPositiveButton("Quiero crear clases", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(FullscreenActivity.this, OwnerCreateActivity.class));
+                        startActivity(new Intent(FullscreenActivity.this, CreateProfileActivity.class));
                         finish();
                     }
                 })

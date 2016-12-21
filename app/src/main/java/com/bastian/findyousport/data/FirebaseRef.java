@@ -20,13 +20,17 @@ public class FirebaseRef {
         return root().child("profiles");
     }
 
-    public DatabaseReference events(String category){
-        return root().child(category).child("profiles").child("event");
+    public DatabaseReference events(){
+        return root().child("event");
     }
 
     public DatabaseReference favorites(){
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         return root().child("favorites").child(uid);
+    }
+
+    public DatabaseReference ListProfiles(){
+        return root().child("profilesList");
     }
 
 }

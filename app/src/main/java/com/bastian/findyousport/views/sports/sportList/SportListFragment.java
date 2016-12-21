@@ -46,9 +46,9 @@ public class SportListFragment extends Fragment {
 
         String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY);
 
-        DatabaseReference reference = new FirebaseRef().events(category);
+        //DatabaseReference reference = new FirebaseRef().events(category);
 
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>
+        /*FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>
                 (Event.class, R.layout.list_item_post, EventHolder.class, reference) {
             @Override
             protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
@@ -64,9 +64,9 @@ public class SportListFragment extends Fragment {
                     }
                 });
             }
-        };
+        };*/
 
-        recycler.setAdapter(adapter);
+        //recycler.setAdapter(adapter);
     }
 
     public static class EventHolder extends RecyclerView.ViewHolder {

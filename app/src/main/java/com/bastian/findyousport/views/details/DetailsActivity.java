@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import static android.os.Build.VERSION_CODES.M;
+import static com.bastian.findyousport.R.id.fabAdd;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -30,25 +30,25 @@ public class DetailsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Event event = (Event) getIntent().getSerializableExtra(SportListFragment.EVENT);
-        Toast.makeText(this, event.getSportName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, event.getSportName(), Toast.LENGTH_SHORT).show();
 
-        final String nameLocal = event.getNameLocal();
+        final String nameLocal = event.getName();
         TextView nameLocalTv = (TextView) findViewById(R.id.reciverNameLocalTv);
         nameLocalTv.setText(nameLocal);
 
-        final String sportName = event.getSportName();
+        //final String sportName = event.getSportName();
         TextView sportNameTv = (TextView) findViewById(R.id.reciverSportNameTv);
-        sportNameTv.setText(sportName);
+        //sportNameTv.setText(sportName);
 
         final int price = event.getPrice();
         TextView priceTv= (TextView) findViewById(R.id.reciverPriceTv);
         priceTv.setText(price);
 
-        final String schedules = event.getSchedules();
+        //final String schedules = event.getSchedules();
         TextView schedulesTv = (TextView) findViewById(R.id.reciverSchedulesTv);
-        schedulesTv.setText(schedules);
+        //schedulesTv.setText(schedules);
 
-        final String location= event.getLocation();
+        /*final String location= event.getLocation();
         TextView locationTv = (TextView) findViewById(R.id.reciverLocationTv);
         locationTv.setText(location);
 
@@ -72,11 +72,11 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         final String key = event.getKey();
-        final FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
+        final FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);*/
         final FloatingActionButton fabDeleted = (FloatingActionButton) findViewById(R.id.fabDelete);
 
-        DatabaseReference reference = new FirebaseRef().favorites().child(key);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        //DatabaseReference reference = new FirebaseRef().favorites().child(key);
+        /*reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
@@ -88,7 +88,7 @@ public class DetailsActivity extends AppCompatActivity {
                             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             final DatabaseReference reference = new FirebaseRef().favorites();
                             //TODO warning category is not seted!!!!!
-                            reference.child(key).removeValue();
+                            //reference.child(key).removeValue();
                             Toast.makeText(DetailsActivity.this, "eliminado de favoritos", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -113,6 +113,6 @@ public class DetailsActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 }

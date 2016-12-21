@@ -199,7 +199,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         String emailInstitution = email.getText().toString();
 
 
-        DatabaseReference databaseReference = new FirebaseRef().events(category);
+        /*DatabaseReference databaseReference = new FirebaseRef().events(category);
         //TODO initiallizae the model correctly
         String key = databaseReference.push().getKey();
         Event event = new Event(
@@ -222,7 +222,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 Toast.makeText(SteperActivity.this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
     }
 
 

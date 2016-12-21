@@ -6,11 +6,12 @@ import com.bastian.findyousport.views.create.partials.InputEmail;
 import com.bastian.findyousport.views.create.partials.InputNumber;
 import com.bastian.findyousport.views.create.partials.InputText;
 import com.bastian.findyousport.views.create.partials.SpinnerCategories;
-import com.bastian.findyousport.views.create.partials.VacantsPiker;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.category;
+import static android.R.attr.key;
 
 /**
  * Created by santo_000 on 29-11-2016.
@@ -18,28 +19,22 @@ import java.util.List;
 
     public class Event implements Serializable {
 
-    private String uid, nameLocal, sportName, schedules, location, email, facebook, key, category;
-    private int price, phoneNum, vacants;
+    private String uid, name, start, end, location;
+    private int price, vacants;
+    private List<String> days;
 
     public Event() {
     }
 
-    public Event(int phoneNum, int price, int vacants, String category, String key, String facebook, String email, String location, String schedules, String sportName, String nameLocal, String uid) {
-        this.phoneNum = phoneNum;
+    public Event(String uid, String name, String start, String end, String location, int price, int vacants, List<String> days) {
+        this.uid = uid;
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.location = location;
         this.price = price;
         this.vacants = vacants;
-        this.category = category;
-        this.key = key;
-        this.facebook = facebook;
-        this.email = email;
-        this.location = location;
-        this.schedules = schedules;
-        this.sportName = sportName;
-        this.nameLocal = nameLocal;
-        this.uid = uid;
-    }
-
-    public Event(String uid, InputText institutionName, InputText sportName, InputNumber price, SpinnerCategories category, EditText schedules, EditText location, InputNumber phoneNum, InputEmail email, EditText facebook, String key, int vacants) {
+        this.days = days;
     }
 
     public String getUid() {
@@ -50,70 +45,28 @@ import java.util.List;
         this.uid = uid;
     }
 
-    public String getNameLocal() {
-        return nameLocal;
+    public String getName() {
+        return name;
     }
 
-    public void setNameLocal(String nameLocal) {
-        this.nameLocal = nameLocal;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSportName() {
-        return sportName;
+    public String getStart() {
+        return start;
     }
 
-    public void setSportName(String sportName) {
-        this.sportName = sportName;
+    public void setStart(String start) {
+        this.start = start;
     }
 
-
-    public String getSchedules() {
-        return schedules;
+    public String getEnd() {
+        return end;
     }
 
-    public void setSchedules(String schedules) {
-        this.schedules = schedules;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public int getPrice() {
@@ -124,19 +77,27 @@ import java.util.List;
         this.price = price;
     }
 
-    public int getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(int phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
     public int getVacants() {
         return vacants;
     }
 
     public void setVacants(int vacants) {
         this.vacants = vacants;
+    }
+
+    public List<String> getDays() {
+        return days;
+    }
+
+    public void setDays(List<String> days) {
+        this.days = days;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
