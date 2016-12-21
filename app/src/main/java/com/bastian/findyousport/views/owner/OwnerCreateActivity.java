@@ -20,7 +20,7 @@ public class OwnerCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_create_profile);
-        //TODO exist 3 views, we need to apply each view depending of te users current actions
+        //TODO exist 3 views, we need to apply each view depending of the tipe of users or is actions
 
         Button publishBtn = (Button) findViewById(R.id.createProfileBtn);
         final Spinner categoriesSpinner = (Spinner)findViewById(R.id.categoriesDd);

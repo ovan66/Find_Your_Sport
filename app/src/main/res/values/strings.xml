@@ -20,11 +20,21 @@
     <string name="crossfit">Crossfit</string>
     <string name="gym">Gym</string>
     <string name="yoga">Yoga</string>
+    <string name="artesMarciales">Artes Marciales</string>
+    <string name="baile">Baile</string>
+    <string name="baileAerobico">Baile Aerobico</string>
+    <string name="kickBoxing">KickBoxing</string>
+    <string name="Acuaticos">Acuaticos</string>
+
 
     <array name="categories_array">
         <item>@string/crossfit</item>
         <item>@string/gym</item>
         <item>@string/yoga</item>
+        <item>@string/artesMarciales</item>
+        <item>@string/baile</item>
+        <item>@string/kickBoxing</item>
+        <item>@string/Acuaticos</item>
     </array>
 
     <array name="categories_array_spinner">
@@ -32,11 +42,17 @@
         <item>@string/crossfit</item>
         <item>@string/gym</item>
         <item>@string/yoga</item>
+        <item>@string/artesMarciales</item>
+        <item>@string/baile</item>
+        <item>@string/kickBoxing</item>
+        <item>@string/Acuaticos</item>
     </array>
 
 
     <string name="vertical_form_stepper_form_continue">Continuar</string>
     <string name="vertical_form_stepper_form_last_step">Confirmar</string>
     <string name="vertical_form_stepper_form_confirm_button">Publicar</string>
+
+    <string name="title_activity_ask">AskActivity</string>
 
 </resources>

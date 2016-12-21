@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nameSportCardTv"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:layout_margin="16dp"
@@ -11,10 +12,10 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:scaleType="centerCrop"
-            android:src="@mipmap/login_background"
             android:layout_width="match_parent"
-            android:layout_height="130dp" />
+            android:layout_height="130dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/login_background" />
 
         <TextView
             android:id="@+id/nameLocalSportTv"
@@ -22,19 +23,19 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
-            android:paddingLeft="12dp"
             android:paddingBottom="4dp"
+            android:paddingLeft="12dp"
             android:paddingTop="4dp"
             android:text="Ubicacion" />
 
         <TextView
-            android:paddingLeft="12dp"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:layout_above="@+id/nameLocalSportTv"
             android:id="@+id/LocationListTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/nameLocalSportTv"
+            android:paddingBottom="4dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="4dp"
             android:text="Nombre del local" />
 
     </RelativeLayout>

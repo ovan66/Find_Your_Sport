@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/authui_colorAccent"
+    tools:context="com.bastian.findyousport.views.AskActivity">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@mipmap/crossfit_image"
+        android:id="@+id/createOwnerProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@mipmap/crossfit_image"
+        android:layout_below="@+id/createOwnerProfile"
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

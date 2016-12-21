@@ -3,11 +3,10 @@ package com.bastian.findyousport.views.login;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.views.create.SteperActivity;
 import com.bastian.findyousport.views.main.MainActivity;
+import com.bastian.findyousport.views.owner.OwnerCreateActivity;
 import com.firebase.ui.auth.AuthUI;
 
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
@@ -18,7 +17,10 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
-        new LoginValidation(this).init();
+        Intent intent = new Intent(this, OwnerCreateActivity.class);
+        startActivity(intent);
+
+        //new LoginValidation(this).init();
     }
 
     @Override
@@ -36,7 +38,7 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
                         .setProviders(
                                 AuthUI.GOOGLE_PROVIDER,
                                 AuthUI.FACEBOOK_PROVIDER)
-                        .setTheme(R.style.FullscreenTheme)
+                        .setTheme(R.style.LoginTheme)
                         .build(),
                 RC_SIGN_IN);
     }
