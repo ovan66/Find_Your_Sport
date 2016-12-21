@@ -80,4 +80,9 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="WarningButton" parent="AppTheme">
+        <item name="colorButtonNormal">@android:color/holo_red_light</item>
+    </style>
+
+
 </resources>

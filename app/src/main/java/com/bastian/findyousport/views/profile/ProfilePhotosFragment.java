@@ -2,9 +2,12 @@ package com.bastian.findyousport.views.profile;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +15,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.bastian.findyousport.R;
+import com.bastian.findyousport.adapters.ProfilePhotoAdapter;
 import com.bastian.findyousport.views.main.MainActivity;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+
+import java.util.ArrayList;
+
+import static android.R.attr.path;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +33,7 @@ public class ProfilePhotosFragment extends Fragment {
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 200;
     private MagicalCamera magicalCamera;
     private ImageButton imageButton;
+    private ProfilePhotoAdapter adapter;
 
 
     public ProfilePhotosFragment() {
@@ -55,30 +64,27 @@ public class ProfilePhotosFragment extends Fragment {
 
             }
         });
+
+        adapter = new ProfilePhotoAdapter(new ArrayList<String>());
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.photosRv);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //CALL THIS METHOD EVER
         magicalCamera.resultPhoto(requestCode, resultCode, data);
 
-        //this is for rotate picture in this method
-        //magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_180);
-
-        //with this form you obtain the bitmap (in this example set this bitmap in image view)
-        imageButton.setImageBitmap(magicalCamera.getPhoto());
-
-        //if you need save your bitmap in device use this method and return the path if you need this
-        //You need to send, the bitmap picture, the photo name, the directory name, the picture type, and autoincrement photo name if           //you need this send true, else you have the posibility or realize your standard name for your pictures.
-        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true);
-
-        if(path != null){
-            Toast.makeText(getContext(), "The photo is save in device, please check this path: " + path, Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getContext(), "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
-        }
-
+        Bitmap bitmap = magicalCamera.getPhoto();
+        String photoName = "yoursport_" + System.currentTimeMillis();
+        String path = magicalCamera.savePhotoInMemoryDevice(bitmap, photoName, "findyoursport", MagicalCamera.JPEG, false);
+        adapter.add(path);
+        System.gc();
 
     }
 }
