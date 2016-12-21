@@ -13,10 +13,4 @@
         </color>
     </item>
 
-    <item
-        android:gravity="right|center_vertical">
-        <bitmap android:src="@mipmap/ic_keyboard_arrow_down_black_24dp"/>
-    </item>
-
-
 </layer-list>
