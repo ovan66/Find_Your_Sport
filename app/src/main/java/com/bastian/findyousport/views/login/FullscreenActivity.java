@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.views.main.MainActivity;
-import com.bastian.findyousport.views.owner.CreateProfileActivity;
+import com.bastian.findyousport.views.profile.CreateProfileActivity;
 import com.firebase.ui.auth.AuthUI;
 
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
@@ -20,7 +20,9 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
 
-        new LoginValidation(this).init();
+        startActivity(new Intent(this, CreateProfileActivity.class));
+
+        //new LoginValidation(this).init();
     }
 
     @Override

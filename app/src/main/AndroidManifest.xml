@@ -43,7 +43,7 @@
         <activity android:name=".views.main.favoriteList.FavoriteListActivity" />
         <activity android:name=".views.sports.SportsActivity" />
         <activity android:name=".views.create.SteperActivity" />
-        <activity android:name=".views.owner.CreateProfileActivity" />
+        <activity android:name=".views.profile.CreateProfileActivity" />
     </application>
 
 </manifest>
