@@ -41,7 +41,7 @@ public class OwnerCreateActivity extends AppCompatActivity {
                 String descripcion = ((EditText)findViewById(R.id.descriptionEt)).getText().toString();
 
                 String category = categoriesSpinner.getSelectedItem().toString().toLowerCase();
-                DatabaseReference reference = new FirebaseRef().ownerProfiles(category);
+                DatabaseReference reference = new FirebaseRef().profiles();
 
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String key = reference.push().getKey();

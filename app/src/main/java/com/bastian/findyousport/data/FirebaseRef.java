@@ -4,6 +4,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static android.R.attr.category;
+
 /**
  * Created by santo_000 on 29-11-2016.
  */
@@ -14,12 +16,12 @@ public class FirebaseRef {
         return FirebaseDatabase.getInstance().getReference();
     }
 
-    public DatabaseReference ownerProfiles(String category){
-        return root().child(category).child("ownerProfiles");
+    public DatabaseReference profiles(){
+        return root().child("profiles");
     }
 
     public DatabaseReference events(String category){
-        return root().child(category).child("ownerProfiles").child("event");
+        return root().child(category).child("profiles").child("event");
     }
 
     public DatabaseReference favorites(){
