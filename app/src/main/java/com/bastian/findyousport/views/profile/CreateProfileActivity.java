@@ -1,57 +1,119 @@
 package com.bastian.findyousport.views.profile;
 
+import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.adapters.CategoriesDdAdapter;
-import com.bastian.findyousport.data.FirebaseRef;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
+import com.bastian.findyousport.data.UserData;
+import com.bastian.findyousport.models.Profile;
 
-public class CreateProfileActivity extends AppCompatActivity {
+import static android.R.attr.fragment;
+
+public class CreateProfileActivity extends AppCompatActivity implements CreateProfileCallback {
+
+    private EditText institutionEt, locationEt, phoneNumEt, emailEt, facebookEt, descriptionEt;
+    private Spinner categoriesSpinner;
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
-        //TODO exist 3 views, we need to apply each view depending of the tipe of users or is actions
 
         Button publishBtn = (Button) findViewById(R.id.createProfileBtn);
-        final Spinner categoriesSpinner = (Spinner)findViewById(R.id.categoriesDd);
+        categoriesSpinner = (Spinner) findViewById(R.id.categoriesDd);
         String[] categoriesList = getResources().getStringArray(R.array.categories_array_spinner);
         CategoriesDdAdapter categoriesDdAdapter = new CategoriesDdAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, categoriesList);
         categoriesSpinner.setAdapter(categoriesDdAdapter);
 
+        institutionEt = (EditText) findViewById(R.id.institutionEt);
+        locationEt = (EditText) findViewById(R.id.locationEt);
+        phoneNumEt = (EditText) findViewById(R.id.phoneNumEt);
+        emailEt = (EditText) findViewById(R.id.emailEt);
+        facebookEt = (EditText) findViewById(R.id.facebookEt);
+        descriptionEt = (EditText) findViewById(R.id.descriptionEt);
+
+
         publishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //TODO Missing add the option to upload images (magic camera)
-                String nameLocal = ((EditText)findViewById(R.id.institutionEt)).getText().toString();
-                String location = ((EditText)findViewById(R.id.locationEt)).getText().toString();
-                String phoneNum = ((EditText)findViewById(R.id.phoneNumEt)).getText().toString();
-                String email = ((EditText)findViewById(R.id.emailEt)).getText().toString();
-                String facebook = ((EditText)findViewById(R.id.facebookEt)).getText().toString();
-                String descripcion = ((EditText)findViewById(R.id.descriptionEt)).getText().toString();
-
-                String category = categoriesSpinner.getSelectedItem().toString().toLowerCase();
-                DatabaseReference reference = new FirebaseRef().profiles();
-
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                String key = reference.push().getKey();
-
-
-                //Profile ownerUser = new Profile(uid, nameLocal, location, email, facebook, key, category, descripcion, phoneNum);
-                //reference.child(key).setValue(ownerUser);
-
-
-                //TODO we need to show the classes that the current ownerUser have created so far
+                validation();
             }
+
         });
+    }
+
+    private void validation(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        int validation = 0;
+        resetErrors();
+
+        String category = categoriesSpinner.getSelectedItem().toString();
+        if (category.equals(getResources().getString(R.string.select_sport))) {
+            validation++;
+            Toast.makeText(CreateProfileActivity.this, "Se requiere categoria", Toast.LENGTH_SHORT).show();
+        }
+
+        String institution = institutionEt.getText().toString();
+        if (institution.trim().length() == 0) {
+            validation++;
+            error(institutionEt);
+        }
+
+        String location = locationEt.getText().toString();
+        if (location.trim().length() == 0) {
+            validation++;
+            error(locationEt);
+        }
+
+
+        String phoneNum = phoneNumEt.getText().toString();
+        if (phoneNum.equals("")) {
+            validation++;
+            error(phoneNumEt);
+        }
+
+        String email = emailEt.getText().toString();
+        if (email.equals("")) {
+            validation++;
+            error(emailEt);
+        }
+
+        String facebook = facebookEt.getText().toString();
+        String description = descriptionEt.getText().toString();
+
+        if (validation == 0) {
+            ProfilePhotosFragment fragment = (ProfilePhotosFragment) getSupportFragmentManager().findFragmentById(R.id.profilePhotosFragment);
+            Profile profile = new Profile(new UserData().uid(), institution, location, email, facebook, category, description, phoneNum, fragment.getPhotos());
+            new CreateProfile(this, profile).init();
+        }
+    }
+
+    private void error(EditText editText){
+        editText.setError("Campo requerido");
+    }
+
+    private void resetErrors(){
+        institutionEt.setError(null);
+        locationEt.setError(null);
+        phoneNumEt.setError(null);
+        emailEt.setError(null);
+    }
+
+    @Override
+    public void done() {
+        progressDialog.dismiss();
+        progressDialog = null;
     }
 }

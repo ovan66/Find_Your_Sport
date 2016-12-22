@@ -22,6 +22,7 @@ import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.R.attr.path;
 import static android.app.Activity.RESULT_OK;
@@ -87,6 +88,9 @@ public class ProfilePhotosFragment extends Fragment {
             adapter.add(path);
         }
         System.gc();
+    }
 
+    protected List<String> getPhotos() {
+        return adapter.getPaths();
     }
 }

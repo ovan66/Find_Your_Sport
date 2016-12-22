@@ -11,18 +11,19 @@ import com.bastian.findyousport.views.main.MainActivity;
 import com.bastian.findyousport.views.profile.CreateProfileActivity;
 import com.firebase.ui.auth.AuthUI;
 
-import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
+import java.util.Arrays;
+
 
 public class FullscreenActivity extends AppCompatActivity implements LoginCallback, ProfileCallback {
+
+    private static final int RC_SIGN_IN = 555;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
 
-        startActivity(new Intent(this, CreateProfileActivity.class));
-
-        //new LoginValidation(this).init();
+        new LoginValidation(this).init();
     }
 
     @Override
@@ -38,8 +39,11 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setProviders(
-                                AuthUI.GOOGLE_PROVIDER,
-                                AuthUI.FACEBOOK_PROVIDER)
+                                Arrays.asList(
+                                        new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                                        new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build()
+                                )
+                        )
                         .setTheme(R.style.LoginTheme)
                         .build(),
                 RC_SIGN_IN);
@@ -48,7 +52,7 @@ public class FullscreenActivity extends AppCompatActivity implements LoginCallba
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             new ProfileValidation(this).init();
         }
     }

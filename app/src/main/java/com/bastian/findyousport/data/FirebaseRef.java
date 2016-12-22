@@ -29,8 +29,8 @@ public class FirebaseRef {
         return root().child("favorites").child(uid);
     }
 
-    public DatabaseReference ListProfiles(){
-        return root().child("profilesList");
+    public DatabaseReference categoryProfile(String category, String uid){
+        return root().child(category).child(uid);
     }
 
 }

@@ -15,5 +15,4 @@ public class SportApp extends Application {
         super.onCreate();
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
-
 }

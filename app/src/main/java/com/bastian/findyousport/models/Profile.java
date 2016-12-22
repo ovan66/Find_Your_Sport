@@ -1,5 +1,7 @@
 package com.bastian.findyousport.models;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,10 +9,14 @@ import java.util.List;
  * Created by Bastian on 19-12-2016.
  */
 
+@IgnoreExtraProperties
 public class Profile implements Serializable{
 
     private String uid, name, location, email, facebook, category, description, phoneNum, photo;
     private List<String> photos;
+
+    public Profile() {
+    }
 
     public Profile(String uid, String name, String location, String email, String facebook, String category, String description, String phoneNum, List<String> photos) {
         this.uid = uid;
@@ -22,9 +28,6 @@ public class Profile implements Serializable{
         this.description = description;
         this.phoneNum = phoneNum;
         this.photos = photos;
-    }
-
-    public Profile() {
     }
 
     public String getUid() {
@@ -99,12 +102,11 @@ public class Profile implements Serializable{
         this.photos = photos;
     }
 
-    public Profile getSimplified() {
-        Profile profile = new Profile();
-        profile.setName(getName());
-        profile.setLocation(getLocation());
-        profile.setUid(getUid());
-        profile.photo = getPhotos().get(0);
-        return profile;
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
