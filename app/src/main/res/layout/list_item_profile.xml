@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nameSportCardTv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_border_bottom">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:paddingLeft="16dp"
+        android:id="@+id/institutionIv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/login_background"
+        android:layout_marginRight="16dp"/>
+
+    <TextView
+        android:layout_toRightOf="@id/institutionIv"
+        android:id="@+id/locationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="Nombre de la institucion" />
+
+    <TextView
+        android:id="@+id/nameLocalSportTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ubicacion"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@+id/institutionIv"
+        android:layout_below="@+id/locationTv"/>
+
+</RelativeLayout>

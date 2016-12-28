@@ -38,7 +38,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.click(category.toLowerCase());
+                listener.click(category);
             }
         });
 

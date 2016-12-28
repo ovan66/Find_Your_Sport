@@ -10,12 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.adapters.CategoriesAdapter;
 import com.bastian.findyousport.adapters.CategoriesClickListener;
-import com.bastian.findyousport.views.sports.SportsActivity;
+import com.bastian.findyousport.views.profiles.ProfilesActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +51,7 @@ public class CategoriesFragment extends Fragment implements CategoriesClickListe
 
     @Override
     public void click(String category) {
-        Intent intent = new Intent(getActivity(), SportsActivity.class);
+        Intent intent = new Intent(getActivity(), ProfilesActivity.class);
         intent.putExtra(CATEGORY, category);
         startActivity(intent);
     }

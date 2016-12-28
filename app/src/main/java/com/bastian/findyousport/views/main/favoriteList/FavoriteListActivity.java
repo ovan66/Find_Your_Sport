@@ -30,7 +30,7 @@ public class FavoriteListActivity extends Activity {
 
         DatabaseReference userData = new FirebaseRef().favorites();
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, FavoriteHolder>
-                (Event.class, R.layout.list_item_post, FavoriteHolder.class, userData) {
+                (Event.class, R.layout.list_item_profile, FavoriteHolder.class, userData) {
 
 
             @Override

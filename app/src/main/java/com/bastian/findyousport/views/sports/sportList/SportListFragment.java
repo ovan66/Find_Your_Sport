@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.views.main.categoryList.CategoriesFragment;
 
 public class SportListFragment extends Fragment {
 
@@ -38,13 +37,13 @@ public class SportListFragment extends Fragment {
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY);
+
 
 
         //DatabaseReference reference = new FirebaseRef().categoryProfile(category,null);
 
        /* FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Profile, ProfileHolder>
-                (Event.class, R.layout.list_item_post, ProfileHolder.class, reference) {
+                (Event.class, R.layout.list_item_profile, ProfileHolder.class, reference) {
             @Override
             protected void populateViewHolder(ProfileHolder viewHolder, final Profile model, int position) {
 
