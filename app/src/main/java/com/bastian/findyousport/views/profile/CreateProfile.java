@@ -2,7 +2,6 @@ package com.bastian.findyousport.views.profile;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
@@ -51,18 +50,13 @@ public class CreateProfile {
         storageReference.putFile(Uri.fromFile(file)).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                Log.d("CreateProfile", "onComplete");
-                Log.d("CreateProfile position", String.valueOf(position));
                 int next = position+1;
-                Log.d("CreateProfile limit", String.valueOf(profile.getPhotos().size()));
-                Log.d("CreateProfile next", String.valueOf(next));
                 String url = "https://firebasestorage.googleapis.com/v0/b/findyousport-c197e.appspot.com/o/profiles%2F"+ uid + "%2f" + photoName + "?alt=media";
                 urls.add(url);
                 if (next < profile.getPhotos().size()) {
                     uploadPhoto(next);
                 } else {
                     profile.setPhotos(urls);
-                    Log.d("CreateProfile", "else");
                     createProfile();
                 }
             }
@@ -70,7 +64,6 @@ public class CreateProfile {
     }
 
     private void createProfile() {
-        Log.d("CreateProfile", "create");
         DatabaseReference databaseReference = new FirebaseRef().profiles();
         databaseReference.child(profile.getUid()).setValue(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -81,7 +74,6 @@ public class CreateProfile {
     }
 
     public void createSimpleProfile() {
-        Log.d("CreateProfile", "simple");
         Profile simplified = new Profile();
         simplified.setUid(profile.getUid());
         simplified.setName(profile.getName());
