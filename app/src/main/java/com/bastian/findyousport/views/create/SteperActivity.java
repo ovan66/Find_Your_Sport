@@ -2,24 +2,38 @@ package com.bastian.findyousport.views.create;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bastian.findyousport.R;
+import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
+import com.bastian.findyousport.models.Event;
+import com.bastian.findyousport.views.create.partials.DaysPicker;
 import com.bastian.findyousport.views.create.partials.InputNumber;
 import com.bastian.findyousport.views.create.partials.InputText;
 import com.bastian.findyousport.views.create.partials.PartialCallback;
+import com.bastian.findyousport.views.create.partials.SchedulerPicker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.shawnlin.numberpicker.NumberPicker;
+
+import java.util.List;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
 
 public class SteperActivity extends AppCompatActivity implements VerticalStepperForm, PartialCallback {
 
+
+    private DaysPicker daysPicker;
     private InputText name;
-    private NumberPicker vacantsPicker, start, end;
+    private NumberPicker vacantsPicker;
+    private SchedulerPicker start, end;
     private InputNumber price;
     private VerticalStepperFormLayout verticalStepperForm;
 
@@ -30,7 +44,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
 
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.createForm);
 
-        String[] mySteps = {"Nombre de la clase", "Hora de inicio", "Hora de termino", "Cupos", "Precio"};
+        String[] mySteps = {"Nombre de la clase","Selecciona los dias", "Hora de inicio", "Hora de termino", "Cupos", "Precio"};
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
 
@@ -52,29 +66,36 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 name.setValidator();
                 view = name;
                 break;
-
             case 1:
-                start = new NumberPicker(this);
-                view = start;
+                daysPicker = new DaysPicker(this);
+                view = daysPicker.getView(this);
+                daysPicker.setValidation();
                 break;
 
             case 2:
-                end = new NumberPicker(this);
-                view = end;
+                start = new SchedulerPicker(this);
+                start.setText("Selecciona la hora de inicio");
+                view = start;
                 break;
 
             case 3:
+                end = new SchedulerPicker(this);
+                end.setText("Selecciona la hora de termino");
+                view = end;
+                break;
+
+            case 4:
                 vacantsPicker = new NumberPicker(this);
                 view = vacantsPicker;
                 break;
 
-            case 4:
+            case 5:
                 price = new InputNumber(this);
                 price.setHint("Precios");
                 view = price;
                 break;
 
-            case 5:
+            case 6:
                 price = new InputNumber(this);
                 price.setHint("Precio");
                 view = price;
@@ -93,15 +114,15 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 break;
 
             case 1:
-                verticalStepperForm.setActiveStepAsCompleted();
+                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
                 break;
 
             case 2:
-                verticalStepperForm.setActiveStepAsCompleted();
+                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
                 break;
 
             case 3:
-                verticalStepperForm.setActiveStepAsCompleted();
+                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
                 break;
 
             case 4:
@@ -109,6 +130,9 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 break;
 
             case 5:
+                verticalStepperForm.setActiveStepAsCompleted();
+                break;
+            case 6:
                 verticalStepperForm.setActiveStepAsCompleted();
                 break;
 
@@ -125,36 +149,24 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
 
         String uid = new UserData().uid();
         String institution = name.getText().toString();
-        int startScheudle = start.getValue();
-        int endScheudle = end.getValue();
+        List<String> days = daysPicker.getAnswer();
+        String startScheudle = start.getText().toString();
+        String endScheudle = end.getText().toString();
         int vacants = vacantsPicker.getValue();
         int priceSport = Integer.parseInt(price.getText().toString());
 
 
-        /*DatabaseReference databaseReference = new FirebaseRef().events(category);
-        //TODO initiallizae the model correctly
+        DatabaseReference databaseReference = new FirebaseRef().events();
+
         String key = databaseReference.push().getKey();
-        Event event = new Event(
-                phoneNumber,
-                priceSport,
-                vacants,
-                category,
-                key,
-                facebookInstitution,
-                emailInstitution,
-                locationinstitution,
-                schedulesClass,
-                sport,
-                institution,
-                uid);
+        Event event = new Event(uid, institution, startScheudle, endScheudle,key,priceSport,vacants, days);
         databaseReference.child(key).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 Toast.makeText(SteperActivity.this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
-
             }
-        });*/
+        });
     }
 
 

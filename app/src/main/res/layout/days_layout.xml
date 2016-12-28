@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="8dp"
+    android:paddingTop="16dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="16dp"
+    android:scrollbarThumbHorizontal="@color/colorPrimaryDark"
+    android:scrollbarSize="2dp"
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    android:scrollbarFadeDuration="1200">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/mondayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L" />
+
+        <CheckBox
+            android:id="@+id/tuesdayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M" />
+
+        <CheckBox
+            android:id="@+id/wednesdayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M" />
+
+        <CheckBox
+            android:id="@+id/thrusdayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="J" />
+
+        <CheckBox
+            android:id="@+id/fridayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="V" />
+
+        <CheckBox
+            android:id="@+id/saturdayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S" />
+
+        <CheckBox
+            android:id="@+id/sundayCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D" />
+
+    </LinearLayout>
+
+</HorizontalScrollView>

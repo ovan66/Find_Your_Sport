@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.UserData;
+import com.bastian.findyousport.views.create.SteperActivity;
 import com.bastian.findyousport.views.login.FullscreenActivity;
 import com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity;
 import com.bastian.findyousport.views.profile.CreateProfileActivity;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.myPublications) {
+            startActivity(new Intent(this, SteperActivity.class));
             //TODO esto debe enviar al usuario a su perfil, que contenga sus publicaciones
         } else if (id == R.id.favSport) {
             Intent intent = new Intent(MainActivity.this, FavoriteListActivity.class);

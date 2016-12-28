@@ -19,7 +19,7 @@ public class FirebaseRef {
     }
 
     public DatabaseReference events(){
-        return root().child("event");
+        return root().child("event").child(new UserData().uid());
     }
 
     public DatabaseReference favorites(){
