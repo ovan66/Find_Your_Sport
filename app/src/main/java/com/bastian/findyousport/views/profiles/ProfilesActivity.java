@@ -1,5 +1,6 @@
 package com.bastian.findyousport.views.profiles;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,12 +12,15 @@ import android.widget.TextView;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Profile;
+import com.bastian.findyousport.views.details.DetailsActivity;
 import com.bastian.findyousport.views.main.categoryList.CategoriesFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 
 public class ProfilesActivity extends AppCompatActivity {
+
+    public static final String UID = "com.bastian.findyousport.views.profiles.ProfilesActivity.UID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,15 @@ public class ProfilesActivity extends AppCompatActivity {
                 viewHolder.setPhoto(model.getPhoto());
                 viewHolder.setName(model.getName());
                 viewHolder.setLocation(model.getLocation());
+                final String uid = model.getUid();
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ProfilesActivity.this, DetailsActivity.class);
+                        intent.putExtra(UID, uid);
+                        startActivity(intent);
+                    }
+                });
             }
         };
 

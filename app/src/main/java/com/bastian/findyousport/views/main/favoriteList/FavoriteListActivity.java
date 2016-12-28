@@ -1,17 +1,14 @@
 package com.bastian.findyousport.views.main.favoriteList;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
-import com.bastian.findyousport.views.details.DetailsActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
@@ -39,9 +36,9 @@ public class FavoriteListActivity extends Activity {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(FavoriteListActivity.this, DetailsActivity.class);
+                        /*Intent intent = new Intent(FavoriteListActivity.this, DetailsActivity.class);
                         intent.putExtra(EVENT, model);
-                        startActivity(intent);
+                        startActivity(intent);*/
 
                         DatabaseReference reference = new FirebaseRef().favorites();
                         //reference.child(model.getKey()).removeValue();
@@ -62,8 +59,8 @@ public class FavoriteListActivity extends Activity {
         }
 
         public void setName(String name) {
-            TextView textView = (TextView) itemView.findViewById(R.id.nameSportCardTv);
-            textView.setText(name);
+            //TextView textView = (TextView) itemView.findViewById(R.id.nameSportCardTv);
+            //textView.setText(name);
         }
     }
 }

@@ -51,5 +51,6 @@
     <string name="vertical_form_stepper_form_continue">Continuar</string>
     <string name="vertical_form_stepper_form_last_step">Confirmar</string>
     <string name="vertical_form_stepper_form_confirm_button">Publicar</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

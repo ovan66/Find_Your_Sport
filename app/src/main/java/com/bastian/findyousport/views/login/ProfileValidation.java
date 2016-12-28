@@ -19,7 +19,7 @@ public class ProfileValidation implements ValueEventListener {
     }
 
     public void init(){
-        DatabaseReference reference = new FirebaseRef().profiles();
+        DatabaseReference reference = new FirebaseRef().userProfile();
         reference.addListenerForSingleValueEvent(this);
     }
 

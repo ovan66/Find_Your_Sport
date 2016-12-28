@@ -39,7 +39,7 @@ public class CreateProfile {
     private void uploadPhoto(final int position){
         final String uid = new UserData().uid();
         final String photoName = String.valueOf(System.currentTimeMillis()) + ".jpeg";
-        String refUrl = "gs://findyousport-c197e.appspot.com/profiles/"+ uid + "/" + photoName;
+        String refUrl = "gs://findyousport-c197e.appspot.com/userProfile/"+ uid + "/" + photoName;
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReferenceFromUrl(refUrl);
@@ -51,7 +51,7 @@ public class CreateProfile {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                 int next = position+1;
-                String url = "https://firebasestorage.googleapis.com/v0/b/findyousport-c197e.appspot.com/o/profiles%2F"+ uid + "%2f" + photoName + "?alt=media";
+                String url = "https://firebasestorage.googleapis.com/v0/b/findyousport-c197e.appspot.com/o/userProfile%2F"+ uid + "%2f" + photoName + "?alt=media";
                 urls.add(url);
                 if (next < profile.getPhotos().size()) {
                     uploadPhoto(next);
@@ -64,8 +64,8 @@ public class CreateProfile {
     }
 
     private void createProfile() {
-        DatabaseReference databaseReference = new FirebaseRef().profiles();
-        databaseReference.child(profile.getUid()).setValue(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+        DatabaseReference databaseReference = new FirebaseRef().userProfile();
+        databaseReference.setValue(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 createSimpleProfile();

@@ -156,7 +156,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         int priceSport = Integer.parseInt(price.getText().toString());
 
 
-        DatabaseReference databaseReference = new FirebaseRef().events();
+        DatabaseReference databaseReference = new FirebaseRef().userEvent();
 
         String key = databaseReference.push().getKey();
         Event event = new Event(uid, institution, startScheudle, endScheudle,key,priceSport,vacants, days);

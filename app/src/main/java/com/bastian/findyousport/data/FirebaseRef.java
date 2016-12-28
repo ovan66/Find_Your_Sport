@@ -10,16 +10,24 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirebaseRef {
 
-    public DatabaseReference root (){
+    private DatabaseReference root (){
         return FirebaseDatabase.getInstance().getReference();
     }
 
-    public DatabaseReference profiles(){
-        return root().child("profiles");
+    public DatabaseReference userProfile(){
+        return root().child("profiles").child(new UserData().uid());
     }
 
-    public DatabaseReference events(){
-        return root().child("event").child(new UserData().uid());
+    private DatabaseReference event() {
+        return root().child("event");
+    }
+
+    public DatabaseReference userEvent(){
+        return event().child(new UserData().uid());
+    }
+
+    public DatabaseReference userEvents(String uid) {
+        return event().child(uid);
     }
 
     public DatabaseReference favorites(){

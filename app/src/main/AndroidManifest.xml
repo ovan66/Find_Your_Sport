@@ -29,10 +29,6 @@
             android:name=".views.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".views.details.DetailsActivity"
-            android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar" />
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -45,7 +41,12 @@
         <activity android:name=".views.sports.SportsActivity" />
         <activity android:name=".views.create.SteperActivity" />
         <activity android:name=".views.profile.CreateProfileActivity" />
-        <activity android:name=".views.profiles.ProfilesActivity"></activity>
+        <activity android:name=".views.profiles.ProfilesActivity" />
+        <activity android:name=".views.main.classList.ClassListActivity" />
+        <activity
+            android:name=".views.details.DetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
