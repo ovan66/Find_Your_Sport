@@ -9,18 +9,19 @@ import java.util.List;
 
     public class Event implements Serializable {
 
-    private String uid, name, start, end;
+    private String uid, name, start, end, key;
     private int price, vacants;
     private List<String> days;
 
     public Event() {
     }
 
-    public Event(String uid, String name, String start, String end, int price, int vacants, List<String> days) {
+    public Event(String uid, String name, String start, String end, String key, int price, int vacants, List<String> days) {
         this.uid = uid;
         this.name = name;
         this.start = start;
         this.end = end;
+        this.key = key;
         this.price = price;
         this.vacants = vacants;
         this.days = days;
@@ -56,6 +57,14 @@ import java.util.List;
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public int getPrice() {
