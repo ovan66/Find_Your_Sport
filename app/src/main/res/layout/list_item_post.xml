@@ -2,9 +2,8 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nameSportCardTv"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:layout_margin="16dp"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:layout_margin="14dp">
 
     <RelativeLayout
         android:id="@+id/eventView"
@@ -12,31 +11,32 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/institutionIv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/login_background" />
+            android:src="@mipmap/login_background"
+            android:layout_marginRight="16dp"/>
+
+        <TextView
+            android:layout_toRightOf="@id/institutionIv"
+            android:id="@+id/locationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:text="Nombre de la institucion" />
 
         <TextView
             android:id="@+id/nameLocalSportTv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="1"
-            android:paddingBottom="4dp"
-            android:paddingLeft="12dp"
-            android:paddingTop="4dp"
-            android:text="Ubicacion" />
-
-        <TextView
-            android:id="@+id/LocationListTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/nameLocalSportTv"
-            android:paddingBottom="4dp"
-            android:paddingLeft="12dp"
-            android:paddingTop="4dp"
-            android:text="Nombre de la institucion" />
+            android:text="Ubicacion"
+            android:padding="8dp"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/institutionIv"
+            android:layout_below="@+id/locationTv"/>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

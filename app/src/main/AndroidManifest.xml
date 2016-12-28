@@ -45,6 +45,7 @@
         <activity android:name=".views.sports.SportsActivity" />
         <activity android:name=".views.create.SteperActivity" />
         <activity android:name=".views.profile.CreateProfileActivity" />
+        <activity android:name=".views.profiles.ProfilesActivity"></activity>
     </application>
 
 </manifest>
