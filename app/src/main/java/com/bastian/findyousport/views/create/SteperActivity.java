@@ -1,42 +1,26 @@
 package com.bastian.findyousport.views.create;
 
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
-import com.bastian.findyousport.models.Event;
-import com.bastian.findyousport.views.create.partials.InputEmail;
 import com.bastian.findyousport.views.create.partials.InputNumber;
 import com.bastian.findyousport.views.create.partials.InputText;
 import com.bastian.findyousport.views.create.partials.PartialCallback;
-import com.bastian.findyousport.views.create.partials.SpinnerCategories;
-import com.bastian.findyousport.views.create.partials.VacantsPiker;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
 import com.shawnlin.numberpicker.NumberPicker;
 
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
 
-import static android.R.attr.phoneNumber;
-
 public class SteperActivity extends AppCompatActivity implements VerticalStepperForm, PartialCallback {
 
-    private EditText  schedules, location, facebook;
-    private SpinnerCategories spinnerCategories;
-    private InputText institutionName, sportName;
-    private NumberPicker vacantsPicker;
-    private InputNumber price, phoneNum;
-    private InputEmail email;
+    private InputText name;
+    private NumberPicker vacantsPicker, start, end;
+    private InputNumber price;
     private VerticalStepperFormLayout verticalStepperForm;
 
     @Override
@@ -46,8 +30,7 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
 
         verticalStepperForm = (VerticalStepperFormLayout) findViewById(R.id.createForm);
 
-        String[] mySteps = {"Nombre de la Institución", "Nombre del Deporte", "Categoria", "Precio", "Horarios",
-                "Ubicacion", "Cupos", "Numero de contacto", "email", "facebook"};
+        String[] mySteps = {"Nombre de la clase", "Hora de inicio", "Hora de termino", "Cupos", "Precio"};
         int colorPrimary = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary);
         int colorPrimaryDark = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark);
 
@@ -57,7 +40,6 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 .displayBottomNavigation(true) // It is true by default, so in this case this line is not necessary
                 .init();
 
-
     }
 
     @Override
@@ -65,67 +47,37 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         View view = null;
         switch (stepNumber) {
             case 0:
-                institutionName = new InputText(this);
-                institutionName.setHint("Nombre de la institucion");
-                institutionName.setValidator();
-                view = institutionName;
+                name = new InputText(this);
+                name.setHint("Nombre de la Clase");
+                name.setValidator();
+                view = name;
                 break;
 
             case 1:
-                sportName = new InputText(this);
-                sportName.setHint("Nombre del deporte");
-                sportName.setValidator();
-                view = sportName;
+                start = new NumberPicker(this);
+                view = start;
                 break;
 
             case 2:
-                spinnerCategories = new SpinnerCategories(this);
-                spinnerCategories.setValidator();
-                view = spinnerCategories;
+                end = new NumberPicker(this);
+                view = end;
                 break;
+
             case 3:
+                vacantsPicker = new NumberPicker(this);
+                view = vacantsPicker;
+                break;
+
+            case 4:
                 price = new InputNumber(this);
                 price.setHint("Precios");
                 view = price;
                 break;
 
-            case 4:
-                schedules = new EditText(this);
-                schedules.setHint("Horarios");
-                view = schedules;
-                break;
-
             case 5:
-                location = new EditText(this);
-                location.setHint("Ubicacion");
-                view = location;
-                break;
-
-            case 6:
-                VacantsPiker vacantWrapper = new VacantsPiker(this);
-                vacantsPicker = vacantWrapper.getView(this);
-                vacantWrapper.setListener();
-                view = vacantsPicker;
-                break;
-
-            case 7:
-                phoneNum = new InputNumber(this);
-                phoneNum.setHint("Numero de telefono");
-                phoneNum.setValidator();
-                view = phoneNum;
-                break;
-
-            case 8:
-                email = new InputEmail(this);
-                email.setHint("Email");
-                email.setValidator();
-                view = email;
-                break;
-
-            case 9:
-                facebook = new EditText(this);
-                facebook.setHint("Facebook");
-                view = facebook;
+                price = new InputNumber(this);
+                price.setHint("Precio");
+                view = price;
                 break;
         }
         return view;
@@ -141,11 +93,11 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 break;
 
             case 1:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
+                verticalStepperForm.setActiveStepAsCompleted();
                 break;
 
             case 2:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
+                verticalStepperForm.setActiveStepAsCompleted();
                 break;
 
             case 3:
@@ -160,21 +112,6 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 verticalStepperForm.setActiveStepAsCompleted();
                 break;
 
-            case 6:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
-                break;
-
-            case 7:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
-                break;
-
-            case 8:
-                verticalStepperForm.setActiveStepAsUncompleted("Campo requerido");
-                break;
-
-            case 9:
-                verticalStepperForm.setActiveStepAsCompleted();
-                break;
 
 
         }
@@ -187,16 +124,11 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         progressDialog.setCancelable(false);
 
         String uid = new UserData().uid();
-        String institution = institutionName.getText().toString();
-        String sport = sportName.getText().toString();
-        int priceSport = Integer.parseInt(price.getText().toString());
-        String category = spinnerCategories.getSelectedItem().toString();
-        String schedulesClass = schedules.getText().toString();
-        String locationinstitution = location.getText().toString();
+        String institution = name.getText().toString();
+        int startScheudle = start.getValue();
+        int endScheudle = end.getValue();
         int vacants = vacantsPicker.getValue();
-        int phoneNumber = Integer.parseInt(phoneNum.getText().toString());
-        String facebookInstitution = facebook.getText().toString();
-        String emailInstitution = email.getText().toString();
+        int priceSport = Integer.parseInt(price.getText().toString());
 
 
         /*DatabaseReference databaseReference = new FirebaseRef().events(category);
