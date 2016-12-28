@@ -59,10 +59,10 @@ public class CreateProfile {
                 Log.d("CreateProfile next", String.valueOf(next));
                 String url = "https://firebasestorage.googleapis.com/v0/b/findyousport-c197e.appspot.com/o/profiles%2F"+ uid + "%2f" + photoName + "?alt=media";
                 urls.add(url);
-                profile.setPhotos(urls);
                 if (profile.getPhotos().size() < next) {
                     uploadPhoto(next);
                 } else {
+                    profile.setPhotos(urls);
                     Log.d("CreateProfile", "else");
                     createProfile();
                 }
@@ -81,7 +81,7 @@ public class CreateProfile {
         });
     }
 
-    private void createSimpleProfile() {
+    public void createSimpleProfile() {
         Log.d("CreateProfile", "simple");
         Profile simplified = new Profile();
         simplified.setUid(profile.getUid());

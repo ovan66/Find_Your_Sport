@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
+import com.bastian.findyousport.models.Profile;
 import com.bastian.findyousport.views.details.DetailsActivity;
 import com.bastian.findyousport.views.main.categoryList.CategoriesFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -46,32 +47,40 @@ public class SportListFragment extends Fragment {
 
         String category = getActivity().getIntent().getStringExtra(CategoriesFragment.CATEGORY);
 
-        //DatabaseReference reference = new FirebaseRef().events(category);
 
-        /*FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>
-                (Event.class, R.layout.list_item_post, EventHolder.class, reference) {
+        DatabaseReference reference = new FirebaseRef().categoryProfile(category,null);
+
+       /* FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Profile, ProfileHolder>
+                (Event.class, R.layout.list_item_post, ProfileHolder.class, reference) {
             @Override
-            protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
-                Log.d("ADAPTER", model.getEmail());
-                viewHolder.setName(model.getSportName());
+            protected void populateViewHolder(ProfileHolder viewHolder, final Profile model, int position) {
+
+
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), DetailsActivity.class);
                         intent.putExtra(EVENT, model);
                         startActivity(intent);
+            }
+
+            @Override
+            protected void populateViewHolder(ProfileHolder viewHolder, final Event model, int position) {
+                Log.d("ADAPTER", model.getEmail());
+                viewHolder.setName(model.getSportName());
+
 
                     }
                 });
             }
-        };*/
+        };
 
-        //recycler.setAdapter(adapter);
+        recycler.setAdapter(adapter);*/
     }
 
-    public static class EventHolder extends RecyclerView.ViewHolder {
+    public static class ProfileHolder extends RecyclerView.ViewHolder {
 
-        public EventHolder(View itemView) {
+        public ProfileHolder(View itemView) {
             super(itemView);
         }
 

@@ -49,9 +49,18 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                 photo.setImageResource(R.mipmap.crossfit_wallpaper);
                 break;
             case 1:
-                photo.setImageResource(R.mipmap.login_background);
+                photo.setImageResource(R.mipmap.gym_wallpaper);
                 break;
             case 2:
+                photo.setImageResource(R.mipmap.yoga_wallpaper);
+                break;
+            case 3:
+                photo.setImageResource(R.mipmap.dance_wallpaper);
+                break;
+            case 4:
+                photo.setImageResource(R.mipmap.acuatico_wallpaper);
+                break;
+            case 5:
                 photo.setImageResource(R.mipmap.login_background);
                 break;
         }
@@ -61,12 +70,25 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             case 0:
                 icon.setImageResource(R.mipmap.corssfit_icon_1);
                 break;
+
             case 1:
+                icon.setImageResource(R.mipmap.gym_icon);
                 break;
 
             case 2:
+                icon.setImageResource(R.mipmap.yoga_icon);
                 break;
 
+            case 3:
+                break;
+
+            case 4:
+                icon.setImageResource(R.mipmap.swim_icon);
+                break;
+
+            case 5:
+                icon.setImageResource(R.mipmap.ic_add_white_24dp);
+                break;
         }
     }
 
@@ -79,7 +101,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         CardView cardView;
         TextView name;
-        ImageView photo,icon;
+        ImageView photo, icon;
 
         ViewHolder(View view) {
             super(view);

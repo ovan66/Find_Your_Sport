@@ -85,7 +85,7 @@ public class CreateProfileActivity extends AppCompatActivity implements CreatePr
         }
 
         String email = emailEt.getText().toString();
-        if (email.equals("")) {
+        if (email.trim().length() == 0) {
             validation++;
             error(emailEt);
         }
