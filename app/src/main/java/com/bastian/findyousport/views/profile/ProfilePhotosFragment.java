@@ -12,11 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.adapters.ProfilePhotoAdapter;
-import com.bastian.findyousport.views.main.MainActivity;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
@@ -24,7 +22,6 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.path;
 import static android.app.Activity.RESULT_OK;
 
 /**
@@ -32,7 +29,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ProfilePhotosFragment extends Fragment {
 
-    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 200;
+    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 100;
     private MagicalCamera magicalCamera;
     private ImageButton imageButton;
     private ProfilePhotoAdapter adapter;
