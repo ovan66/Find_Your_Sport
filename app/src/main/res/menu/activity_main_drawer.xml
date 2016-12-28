@@ -10,6 +10,11 @@
             android:id="@+id/favSport"
             android:icon="@mipmap/ic_favorite_black_24dp"
             android:title="Mis Deportes Favoritos" />
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@mipmap/ic_account_circle_black_24dp"
+            android:title="Mi perfil"/>
     </group>
 
     <item android:title="Cuenta">

@@ -8,7 +8,6 @@ import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.models.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -59,7 +58,7 @@ public class CreateProfile {
                 Log.d("CreateProfile next", String.valueOf(next));
                 String url = "https://firebasestorage.googleapis.com/v0/b/findyousport-c197e.appspot.com/o/profiles%2F"+ uid + "%2f" + photoName + "?alt=media";
                 urls.add(url);
-                if (profile.getPhotos().size() < next) {
+                if (next < profile.getPhotos().size()) {
                     uploadPhoto(next);
                 } else {
                     profile.setPhotos(urls);
