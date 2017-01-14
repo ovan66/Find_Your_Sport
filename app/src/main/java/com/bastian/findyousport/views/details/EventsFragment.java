@@ -65,6 +65,7 @@ public class EventsFragment extends Fragment {
 
         private final TextView name, days, schedule;
 
+
         public EventHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.classNameTv);

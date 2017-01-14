@@ -20,43 +20,43 @@
             android:id="@+id/mondayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="L" />
+            android:text="Lu" />
 
         <CheckBox
             android:id="@+id/tuesdayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M" />
+            android:text="Ma" />
 
         <CheckBox
             android:id="@+id/wednesdayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M" />
+            android:text="Mi" />
 
         <CheckBox
             android:id="@+id/thrusdayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="J" />
+            android:text="Ju" />
 
         <CheckBox
             android:id="@+id/fridayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="V" />
+            android:text="Vi" />
 
         <CheckBox
             android:id="@+id/saturdayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="S" />
+            android:text="Sa" />
 
         <CheckBox
             android:id="@+id/sundayCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="D" />
+            android:text="Do" />
 
     </LinearLayout>
 

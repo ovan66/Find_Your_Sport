@@ -14,8 +14,15 @@ public class FirebaseRef {
         return FirebaseDatabase.getInstance().getReference();
     }
 
+    public DatabaseReference profile(){
+        return root().child("profiles");
+    }
+
     public DatabaseReference userProfile(){
         return root().child("profiles").child(new UserData().uid());
+    }
+    public DatabaseReference userProfileUid(String uid){
+        return profile().child(uid);
     }
 
     private DatabaseReference event() {

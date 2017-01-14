@@ -48,6 +48,11 @@
     </array>
 
 
+    <string name="description">Descripcion Ejemplo: El CrossFit es una técnica de entrenamiento que
+        encadena movimientos de diferentes disciplinas al mismo tiempo, tales como la halterofilia,
+        el entrenamiento metabólico o el gimnástico.</string>
+
+
     <string name="vertical_form_stepper_form_continue">Continuar</string>
     <string name="vertical_form_stepper_form_last_step">Confirmar</string>
     <string name="vertical_form_stepper_form_confirm_button">Publicar</string>

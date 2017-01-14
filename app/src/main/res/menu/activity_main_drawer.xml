@@ -5,7 +5,7 @@
         <item
             android:id="@+id/myPublications"
             android:icon="@mipmap/ic_folder_black_24dp"
-            android:title="Mis Publicaciones" />
+            android:title="Crea una clase" />
         <item
             android:id="@+id/favSport"
             android:icon="@mipmap/ic_favorite_black_24dp"
