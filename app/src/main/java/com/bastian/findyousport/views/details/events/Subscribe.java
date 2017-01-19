@@ -23,13 +23,15 @@ public class Subscribe {
 
     private SubscriptionCallback callback;
     private Event event;
+    private int result = 0;
+    private static final int SUCCESS = 1;
 
     public Subscribe(SubscriptionCallback callback, Event event) {
         this.callback = callback;
         this.event = event;
     }
 
-    public void validation(String uid) {
+    public void validation(final String uid) {
         DatabaseReference reference = new FirebaseRef().eventSuscription(uid, event.getKey());
         reference.runTransaction(new Transaction.Handler() {
             @Override
@@ -55,6 +57,7 @@ public class Subscribe {
                         Log.d("SUBSCRIPTIONS", "list null ");
                         List<Subscription> subscriptionList = new ArrayList<>();
                         subscriptionList.add(subscription);
+                        result = SUCCESS;
                         mutableData.child("subscribers").setValue(subscriptionList);
                     }
                 } else {
@@ -87,6 +90,18 @@ public class Subscribe {
 
             @Override
             public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                //TODO create a int to determinate the result
+                switch (result) {
+                    case 0:
+                        //NOHTHING HAPPENED
+                        //HANDLE THIS CASE?
+                        break;
+                    case SUCCESS:
+                        callback.success();
+                        break;
+                    default:
+                        break;
+                }
                 Log.d("onComplete", dataSnapshot.getKey());
             }
         });
