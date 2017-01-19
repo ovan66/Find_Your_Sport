@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
@@ -20,12 +22,8 @@ import com.bastian.findyousport.views.profiles.ProfilesActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.List;
-
 
 public class EventsFragment extends Fragment {
-
-    private BottomSheetBehavior sheetBehavior;
 
     public EventsFragment() {
         // Required empty public constructor
@@ -43,8 +41,17 @@ public class EventsFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        CardView bottomSheet = (CardView) view.findViewById(R.id.bottomSheet);
+        final BottomSheetBehavior sheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        final TextView nameTv = (TextView) view.findViewById(R.id.classNameTv);
+        final TextView daysTv = (TextView) view.findViewById(R.id.daysTv);
+        final TextView scheduleTv = (TextView) view.findViewById(R.id.scheduleTv);
+        final Button signBtn = (Button) view.findViewById(R.id.signBtn);
+
+
         RecyclerView recycler = (RecyclerView) view.findViewById(R.id.eventsRv);
 
         recycler.setHasFixedSize(true);
@@ -56,17 +63,34 @@ public class EventsFragment extends Fragment {
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_event, EventHolder.class, reference) {
             @Override
             protected void populateViewHolder(EventHolder viewHolder, Event model, int position) {
-                viewHolder.setName(model.getName());
-                viewHolder.setDays(model.getDays());
-                viewHolder.setSchedule(model.getStart(), model.getEnd());
+                viewHolder.setIsRecyclable(false);
+                final String name = model.getName();
+                final String days = model.getDays().toString().replaceAll("\\[","").replaceAll("]","");
+                final String schedule = model.getStart() + " - " +  model.getEnd();
+                viewHolder.setName(name);
+                viewHolder.setDays(days);
+                viewHolder.setSchedule(schedule);
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                        nameTv.setText(name);
+                        daysTv.setText(days);
+                        scheduleTv.setText(schedule);
+                        signBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(getContext(), "wdawd", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
             }
         };
 
         recycler.setAdapter(adapter);
 
-        CardView bottomSheet = (CardView) view.findViewById(R.id.bottomSheet);
-        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
-        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     public static class EventHolder extends RecyclerView.ViewHolder {
@@ -85,17 +109,12 @@ public class EventsFragment extends Fragment {
             this.name.setText(name);
         }
 
-        public void setDays(List<String> days){
-            String text = "";
-            for (String day : days) {
-                text = text + day + ", ";
-            }
-            this.days.setText(text);
-
+        public void setDays(String days){
+            this.days.setText(days);
         }
 
-        public void setSchedule (String start, String end){
-            this.schedule.setText(start + " - " + end);
+        public void setSchedule (String schedule){
+            this.schedule.setText(schedule);
 
         }
     }
