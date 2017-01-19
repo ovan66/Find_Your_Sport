@@ -8,18 +8,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.models.Profile;
 import com.bastian.findyousport.views.profiles.ProfilesActivity;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
+
+import java.util.List;
 
 
 public class ProfileFragment extends Fragment implements ProfileCallback {
 
+    private SliderLayout sliderLayout;
     private TextView name,location,description, phoneNum, email, facebook;
-    private ImageView photos;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -58,7 +62,8 @@ public class ProfileFragment extends Fragment implements ProfileCallback {
         phoneNum = (TextView) view.findViewById(R.id.phoneNumTv);
         email = (TextView) view.findViewById(R.id.emailTv);
         facebook = (TextView) view.findViewById(R.id.facebookTv);
-        photos = (ImageView) view.findViewById(R.id.galleryIv);
+        sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
+
 
         String uid = getActivity().getIntent().getStringExtra(ProfilesActivity.UID);
         new GetProfile(this).get(uid);
@@ -72,5 +77,24 @@ public class ProfileFragment extends Fragment implements ProfileCallback {
         phoneNum.setText(profile.getPhoneNum());
         email.setText(profile.getEmail());
         facebook.setText(profile.getFacebook());
+        setSlider(profile.getPhotos());
+    }
+
+    private void setSlider(List<String> urls){
+        for (String url : urls){
+            TextSliderView textSliderView = new TextSliderView(getContext());
+            textSliderView
+                    .image(url)
+                    .setScaleType(BaseSliderView.ScaleType.CenterCrop);
+
+            sliderLayout.addSlider(textSliderView);
+        }
+        sliderLayout.startAutoCycle();
+    }
+
+    @Override
+    public void onStop() {
+        sliderLayout.stopAutoCycle();
+        super.onStop();
     }
 }
