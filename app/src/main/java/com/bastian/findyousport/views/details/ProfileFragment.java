@@ -1,13 +1,10 @@
 package com.bastian.findyousport.views.details;
 
 
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +14,11 @@ import android.widget.TextView;
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.adapters.SectionsPagerAdapter;
 import com.bastian.findyousport.data.FirebaseRef;
-import com.bastian.findyousport.models.Event;
-import com.bastian.findyousport.models.Profile;
 import com.bastian.findyousport.views.profiles.ProfilesActivity;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import retrofit2.http.POST;
 
 
 public class ProfileFragment extends Fragment implements DetailsCallback{
@@ -50,7 +41,7 @@ public class ProfileFragment extends Fragment implements DetailsCallback{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.details_profile_view, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
 
 
     }

@@ -1,6 +1,95 @@
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.bastian.findyousport.views.details.ProfileFragment"/>
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/galleryIv"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/crossfit_image" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/galleryIv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/institutionTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="20dp"
+                android:text="Nombre de la institucion"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/locationTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/institutionTv"
+                android:paddingLeft="16dp"
+                android:paddingTop="20dp"
+                android:text="Ubicacion"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/descriptionTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/locationTv"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/description" />
+
+            <TextView
+                android:id="@+id/phoneNumTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionTv"
+                android:paddingLeft="16dp"
+                android:paddingTop="20dp"
+                android:text="+569 78396210"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phoneNumTv"
+                android:paddingLeft="16dp"
+                android:paddingTop="20dp"
+                android:text="mail@example.com"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/facebookTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailTv"
+                android:paddingLeft="16dp"
+                android:paddingTop="20dp"
+                android:text="www.facebook.com/pageExample/"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/profileFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@mipmap/ic_favorite_white_24dp" />
+
+</RelativeLayout>
