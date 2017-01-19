@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.bastian.findyousport.views.details.EventsFragment;
-import com.bastian.findyousport.views.details.ProfileFragment;
+import com.bastian.findyousport.views.details.profile.ProfileFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

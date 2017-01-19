@@ -1,4 +1,4 @@
-package com.bastian.findyousport.views.details;
+package com.bastian.findyousport.views.details.profile;
 
 
 import android.os.Bundle;
@@ -12,22 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bastian.findyousport.R;
-import com.bastian.findyousport.adapters.SectionsPagerAdapter;
-import com.bastian.findyousport.data.FirebaseRef;
+import com.bastian.findyousport.models.Profile;
 import com.bastian.findyousport.views.profiles.ProfilesActivity;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 
-public class ProfileFragment extends Fragment implements DetailsCallback{
+public class ProfileFragment extends Fragment implements ProfileCallback {
 
     private TextView name,location,description, phoneNum, email, facebook;
     private ImageView photos;
-
-    public static final String UID = "com.bastian.findyousport.views.profiles.ProfilesActivity.UID";
-
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -50,9 +42,6 @@ public class ProfileFragment extends Fragment implements DetailsCallback{
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
-
-
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.profileFab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,27 +60,17 @@ public class ProfileFragment extends Fragment implements DetailsCallback{
         facebook = (TextView) view.findViewById(R.id.facebookTv);
         photos = (ImageView) view.findViewById(R.id.galleryIv);
 
-
         String uid = getActivity().getIntent().getStringExtra(ProfilesActivity.UID);
-        DatabaseReference reference = new FirebaseRef().userProfileUid(uid);
-        reference.addValueEventListener(new ValueEventListener() {
+        new GetProfile(this).get(uid);
+    }
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                name.setText((dataSnapshot.child("name").getValue()).toString());
-                location.setText((dataSnapshot.child("location").getValue()).toString());
-                description.setText((dataSnapshot.child("description").getValue()).toString());
-                phoneNum.setText((dataSnapshot.child("phoneNum").getValue()).toString());
-                email.setText((dataSnapshot.child("email").getValue()).toString());
-                facebook.setText((dataSnapshot.child("facebook").getValue()).toString());
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-
-
-        });
+    @Override
+    public void setProfile(Profile profile) {
+        name.setText(profile.getName());
+        location.setText(profile.getLocation());
+        description.setText(profile.getDescription());
+        phoneNum.setText(profile.getPhoneNum());
+        email.setText(profile.getEmail());
+        facebook.setText(profile.getFacebook());
     }
 }

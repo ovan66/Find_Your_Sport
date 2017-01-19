@@ -1,7 +1,7 @@
 package com.bastian.findyousport.views.details;
 
 import com.bastian.findyousport.data.FirebaseRef;
-import com.bastian.findyousport.views.login.ProfileCallback;
+import com.bastian.findyousport.views.details.profile.ProfileCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,9 +13,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DetailsValidation implements ValueEventListener {
 
-    private DetailsCallback callback;
+    private ProfileCallback callback;
 
-    public DetailsValidation(DetailsCallback callback) {
+    public DetailsValidation(ProfileCallback callback) {
         this.callback = callback;
     }
 
