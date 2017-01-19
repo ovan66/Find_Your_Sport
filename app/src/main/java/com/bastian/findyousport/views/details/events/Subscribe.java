@@ -15,6 +15,8 @@ import com.google.firebase.database.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.util.Log.d;
+
 /**
  * Created by cutiko on 19-01-17.
  */
@@ -25,6 +27,10 @@ public class Subscribe {
     private Event event;
     private int result = 0;
     private static final int SUCCESS = 1;
+    private static final int FAIL = 2;
+    private static final int BAD_LUCK = 3;
+    private static final int CHEATER = 4;
+
 
     public Subscribe(SubscriptionCallback callback, Event event) {
         this.callback = callback;
@@ -37,55 +43,41 @@ public class Subscribe {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
                 UserData user = new UserData();
-                Subscription subscription = new Subscription(user.uid(), user.email());
+                String userUid = user.uid();
+                Subscription subscription = new Subscription(userUid, user.email());
                 Event liveEvent = mutableData.getValue(Event.class);
                 if (liveEvent != null) {
                     List<Subscription> subscriptions = liveEvent.getSubscribers();
                     if (subscriptions != null && subscriptions.size() > 0) {
-                        Log.d("SUBSCRIPTIONS", "not null " + subscriptions.size());
                         //TODO iterate over the susbscription list to make sure user is not subscribing again
                         if (liveEvent.getVacants() > subscriptions.size()) {
-                            Log.d("SUBSCRIPTIONS", "vacants availables");
-                            List<Subscription> subscriptionList = subscriptions;
-                            subscriptionList.add(subscription);
-                            mutableData.child("subscribers").setValue(subscriptionList);
-                            Log.d("SUBSCRIPTIONS", "susbscriptios size = " + subscriptions.size());
+                            boolean validation = true;
+                            for (Subscription sub : subscriptions) {
+                                if (userUid == sub.getUid()) {
+                                    validation = false;
+                                }
+                            }
+                            if (validation) {
+                                List<Subscription> subscriptionList = subscriptions;
+                                subscriptionList.add(subscription);
+                                result = SUCCESS;
+                                mutableData.child("subscribers").setValue(subscriptionList);
+                            } else {
+                                result = CHEATER;
+                            }
                         } else {
-                            Log.d("SUBSCRIPTIONS", "bad luck");
+                            result = BAD_LUCK;
                         }
                     } else {
-                        Log.d("SUBSCRIPTIONS", "list null ");
                         List<Subscription> subscriptionList = new ArrayList<>();
                         subscriptionList.add(subscription);
-                        result = SUCCESS;
                         mutableData.child("subscribers").setValue(subscriptionList);
+                        result = SUCCESS;
                     }
                 } else {
-
+                    result = FAIL;
                 }
                 return Transaction.success(mutableData);
-                /*List<Subscription> subscriptions = mutableData.getValue(List.class);
-                Log.d("SUBSCRIPTION", subscriptions.toString());
-                UserData user = new UserData();
-                Subscription subscription = new Subscription(user.uid(), user.email());
-                if (subscriptions != null) {
-                    if (event.getVacants() < subscriptions.size()) {
-                        subscriptions.add(subscription);
-                        mutableData.setValue(subscriptions);
-                        callback.success();
-                        return Transaction.success(mutableData);
-                    } else {
-                        callback.badLuck();
-                        return Transaction.success(mutableData);
-                    }
-                } else {
-                    List<Subscription> subscriptionList = new ArrayList<>();
-                    subscriptionList.add(subscription);
-                    mutableData.setValue(subscriptionList);
-                    callback.success();
-                    return Transaction.success(mutableData);
-                }*/
-
             }
 
             @Override
@@ -96,14 +88,39 @@ public class Subscribe {
                         //NOHTHING HAPPENED
                         //HANDLE THIS CASE?
                         break;
+
                     case SUCCESS:
                         callback.success();
                         break;
+
+                    case FAIL:
+                        callback.badLuck();
+                        break;
+
+                    case BAD_LUCK:
+                        callback.badLuck();
+                        break;
+
+                    case CHEATER:
+                        callback.badLuck();
+                        break;
+
                     default:
                         break;
                 }
-                Log.d("onComplete", dataSnapshot.getKey());
+                d("onComplete", dataSnapshot.getKey());
             }
         });
     }
+
+    //TODO move this to a method
+
+    public void subscribeCreation(DataSnapshot dataSnapshot) {
+        Event event = dataSnapshot.getValue(Event.class);
+        event.setSubscribers(null);
+        DatabaseReference reference = new FirebaseRef().userSubsriptions(event.getKey());
+        Event subscription = new Event();
+
+    }
+
 }

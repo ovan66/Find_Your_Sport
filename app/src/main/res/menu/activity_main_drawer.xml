@@ -7,9 +7,9 @@
             android:icon="@mipmap/ic_folder_black_24dp"
             android:title="Crea una clase" />
         <item
-            android:id="@+id/favSport"
+            android:id="@+id/mySubscriptions"
             android:icon="@mipmap/ic_favorite_black_24dp"
-            android:title="Mis Deportes Favoritos" />
+            android:title="Mis clases tomadas" />
 
         <item
             android:id="@+id/profile"

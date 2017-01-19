@@ -50,7 +50,7 @@ public class FirebaseRef {
         return category(category).child(uid);
     }
 
-    public DatabaseReference userSubsription(String key){
+    public DatabaseReference userSubsriptions(String key){
         return root().child("subscriptions").child(new UserData().uid());
     }
 

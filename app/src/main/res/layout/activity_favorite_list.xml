@@ -9,6 +9,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bastian.findyousport.views.main.favoriteList.FavoriteListActivity">
+    tools:context="com.bastian.findyousport.views.main.mySubscriptions.MySubscriptionsListActivity">
 
 </android.support.v7.widget.RecyclerView>
