@@ -1,9 +1,11 @@
-package com.bastian.findyousport.views.details;
+package com.bastian.findyousport.views.details.events;
 
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +25,8 @@ import java.util.List;
 
 public class EventsFragment extends Fragment {
 
+    private BottomSheetBehavior sheetBehavior;
+
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -41,7 +45,7 @@ public class EventsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView recycler = (RecyclerView) view;
+        RecyclerView recycler = (RecyclerView) view.findViewById(R.id.eventsRv);
 
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -59,6 +63,10 @@ public class EventsFragment extends Fragment {
         };
 
         recycler.setAdapter(adapter);
+
+        CardView bottomSheet = (CardView) view.findViewById(R.id.bottomSheet);
+        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     public static class EventHolder extends RecyclerView.ViewHolder {
