@@ -50,4 +50,12 @@ public class FirebaseRef {
         return category(category).child(uid);
     }
 
+    public DatabaseReference userSubsription(String key){
+        return root().child("subscriptions").child(new UserData().uid());
+    }
+
+    public DatabaseReference eventSuscription(String uid, String key){
+        return userEvents(uid).child(key);
+    }
+
 }

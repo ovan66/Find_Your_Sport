@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
 
-public class EventsFragment extends Fragment {
+public class EventsFragment extends Fragment implements SubscriptionCallback {
 
     public EventsFragment() {
         // Required empty public constructor
@@ -57,12 +58,12 @@ public class EventsFragment extends Fragment {
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        String uid = getActivity().getIntent().getStringExtra(ProfilesActivity.UID);
+        final String uid = getActivity().getIntent().getStringExtra(ProfilesActivity.UID);
         DatabaseReference reference = new FirebaseRef().userEvents(uid);
 
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, EventHolder>(Event.class, R.layout.list_item_event, EventHolder.class, reference) {
             @Override
-            protected void populateViewHolder(EventHolder viewHolder, Event model, int position) {
+            protected void populateViewHolder(EventHolder viewHolder, final Event model, int position) {
                 viewHolder.setIsRecyclable(false);
                 final String name = model.getName();
                 final String days = model.getDays().toString().replaceAll("\\[","").replaceAll("]","");
@@ -80,7 +81,8 @@ public class EventsFragment extends Fragment {
                         signBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(getContext(), "wdawd", Toast.LENGTH_SHORT).show();
+                                Log.d("CLICK", "click");
+                                new Subscribe(EventsFragment.this, model).validation(uid);
                             }
                         });
                     }
@@ -91,6 +93,16 @@ public class EventsFragment extends Fragment {
 
         recycler.setAdapter(adapter);
 
+    }
+
+    @Override
+    public void success() {
+        Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void badLuck() {
+        Toast.makeText(getContext(), "Qué mala suerte, mientras mirabas se acabaron los cupos", Toast.LENGTH_SHORT).show();
     }
 
     public static class EventHolder extends RecyclerView.ViewHolder {

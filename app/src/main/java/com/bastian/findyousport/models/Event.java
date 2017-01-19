@@ -11,7 +11,8 @@ public class Event implements Serializable {
 
     private String uid, name, start, end, key, institution, location;
     private int price, vacants;
-    private List<String> days, subscribers;
+    private List<String> days;
+    private List<Subscription> subscribers;
 
     public Event() {
     }
@@ -93,11 +94,11 @@ public class Event implements Serializable {
         this.days = days;
     }
 
-    public List<String> getSubscribers() {
+    public List<Subscription> getSubscribers() {
         return subscribers;
     }
 
-    public void setSubscribers(List<String> subscribers) {
+    public void setSubscribers(List<Subscription> subscribers) {
         this.subscribers = subscribers;
     }
 
