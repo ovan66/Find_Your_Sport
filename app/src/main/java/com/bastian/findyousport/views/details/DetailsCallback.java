@@ -5,6 +5,4 @@ package com.bastian.findyousport.views.details;
  */
 
 public interface DetailsCallback {
-
-
 }

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bastian.findyousport.R;
+import com.bastian.findyousport.adapters.SectionsPagerAdapter;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
 import com.bastian.findyousport.models.Profile;
@@ -57,6 +58,9 @@ public class ProfileFragment extends Fragment implements DetailsCallback{
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.profileFab);
         fab.setOnClickListener(new View.OnClickListener() {
