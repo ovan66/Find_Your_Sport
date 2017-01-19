@@ -1,10 +1,13 @@
 package com.bastian.findyousport.views.create;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,11 +15,15 @@ import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.models.Event;
+import com.bastian.findyousport.models.Profile;
 import com.bastian.findyousport.views.create.partials.DaysPicker;
 import com.bastian.findyousport.views.create.partials.InputNumber;
 import com.bastian.findyousport.views.create.partials.InputText;
 import com.bastian.findyousport.views.create.partials.PartialCallback;
 import com.bastian.findyousport.views.create.partials.SchedulerPicker;
+import com.bastian.findyousport.views.details.profile.GetProfile;
+import com.bastian.findyousport.views.details.profile.ProfileCallback;
+import com.bastian.findyousport.views.profile.CreateProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +34,7 @@ import java.util.List;
 import ernestoyaquello.com.verticalstepperform.VerticalStepperFormLayout;
 import ernestoyaquello.com.verticalstepperform.interfaces.VerticalStepperForm;
 
-public class SteperActivity extends AppCompatActivity implements VerticalStepperForm, PartialCallback {
+public class SteperActivity extends AppCompatActivity implements VerticalStepperForm, PartialCallback, ProfileCallback {
 
 
     private DaysPicker daysPicker;
@@ -36,6 +43,8 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
     private SchedulerPicker start, end;
     private InputNumber price;
     private VerticalStepperFormLayout verticalStepperForm;
+    private Profile profile;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,8 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
                 .displayBottomNavigation(true) // It is true by default, so in this case this line is not necessary
                 .init();
 
+        uid = new UserData().uid();
+        new GetProfile(this).get(uid);
     }
 
     @Override
@@ -147,26 +158,33 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        String uid = new UserData().uid();
-        String institution = name.getText().toString();
+        String name = this.name.getText().toString();
         List<String> days = daysPicker.getAnswer();
         String startScheudle = start.getText().toString();
         String endScheudle = end.getText().toString();
         int vacants = vacantsPicker.getValue();
         int priceSport = Integer.parseInt(price.getText().toString());
 
-
-        DatabaseReference databaseReference = new FirebaseRef().userEvent();
-
-        String key = databaseReference.push().getKey();
-        Event event = new Event(uid, institution, startScheudle, endScheudle,key,priceSport,vacants, days);
-        databaseReference.child(key).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                progressDialog.dismiss();
-                Toast.makeText(SteperActivity.this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (profile != null) {
+            DatabaseReference databaseReference = new FirebaseRef().userEvent();
+            String key = databaseReference.push().getKey();
+            Event event = new Event(uid, name, startScheudle, endScheudle,key, profile.getName(), profile.getLocation(), priceSport,vacants, days);
+            databaseReference.child(key).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SteperActivity.this, "Su clase ha sido publicada", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Debe tener un perfil creado", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(SteperActivity.this, CreateProfile.class));
+                }
+            }, 2400);
+        }
     }
 
 
@@ -180,4 +198,9 @@ public class SteperActivity extends AppCompatActivity implements VerticalStepper
         verticalStepperForm.setActiveStepAsCompleted();
     }
 
+    @Override
+    public void setProfile(Profile profile) {
+        Log.d("PROFILE", profile.getUid());
+        this.profile = profile;
+    }
 }
