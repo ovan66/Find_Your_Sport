@@ -117,8 +117,7 @@ public class Subscribe {
         Event event = dataSnapshot.getValue(Event.class);
         event.setSubscribers(null);
         DatabaseReference reference = new FirebaseRef().userSubsriptions(event.getKey());
-        Event subscription = new Event();
-        reference.child(event.getKey()).setValue(subscription);
+        reference.child(event.getKey()).setValue(event);
     }
 
 }
