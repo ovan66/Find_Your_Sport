@@ -75,7 +75,7 @@ public class MySubscriptionsListActivity extends AppCompatActivity {
         }
 
         public void setInstitution(String institution){
-            this.location.setText(institution);
+            this.institution.setText(institution);
         }
 
         public void setName(String className) {
@@ -87,11 +87,11 @@ public class MySubscriptionsListActivity extends AppCompatActivity {
         }
 
         public void setDays(String days){
-            this.location.setText(days);
+            this.days.setText(days);
         }
 
         public void setSchedule(String schedule){
-            this.location.setText(schedule);
+            this.schedule.setText(schedule);
         }
 
     }
