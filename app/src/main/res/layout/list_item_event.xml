@@ -28,6 +28,4 @@
         android:layout_below="@+id/classNameTv"
         android:layout_alignParentRight="true"/>
 
-
-
 </RelativeLayout>

@@ -21,6 +21,7 @@ import com.bastian.findyousport.data.FirebaseRef;
 import com.bastian.findyousport.models.Event;
 import com.bastian.findyousport.views.profiles.ProfilesActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 
@@ -81,7 +82,6 @@ public class EventsFragment extends Fragment implements SubscriptionCallback {
                         signBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Log.d("CLICK", "click");
                                 new Subscribe(EventsFragment.this, model).validation(uid);
                             }
                         });
@@ -97,7 +97,7 @@ public class EventsFragment extends Fragment implements SubscriptionCallback {
 
     @Override
     public void success() {
-        Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Has tomado la clase", Toast.LENGTH_SHORT).show();
     }
 
     @Override

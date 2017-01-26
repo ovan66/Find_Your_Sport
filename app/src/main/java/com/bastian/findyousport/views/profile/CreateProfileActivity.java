@@ -78,7 +78,7 @@ public class CreateProfileActivity extends AppCompatActivity implements CreatePr
 
 
         String phoneNum = phoneNumEt.getText().toString();
-        if (phoneNum.equals("")) {
+        if (phoneNum.length() < 8 ) {
             validation++;
             error(phoneNumEt);
         }

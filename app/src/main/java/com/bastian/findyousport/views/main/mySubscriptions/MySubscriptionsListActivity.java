@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.bastian.findyousport.R;
 import com.bastian.findyousport.data.FirebaseRef;
+import com.bastian.findyousport.data.UserData;
 import com.bastian.findyousport.models.Event;
 import com.bastian.findyousport.views.details.DetailsActivity;
-import com.bastian.findyousport.views.profiles.ProfilesActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
@@ -31,15 +31,22 @@ public class MySubscriptionsListActivity extends Activity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        DatabaseReference userData = new FirebaseRef().favorites();
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, FavoriteHolder>
-                (Event.class, R.layout.list_item_profile, FavoriteHolder.class, userData) {
+        String key = new UserData().uid();
+        DatabaseReference reference = new FirebaseRef().userSubsriptions(key);
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Event, SubscriptionHolder>
+                (Event.class, R.layout.list_item_subscriptions, SubscriptionHolder.class, reference) {
 
 
             @Override
-            protected void populateViewHolder(FavoriteHolder viewHolder, final Event model, int position) {
-                viewHolder.setName(model.getName());
+            protected void populateViewHolder(SubscriptionHolder viewHolder, final Event model, int position) {
+                final String days = model.getDays().toString().replaceAll("\\[","").replaceAll("]","");
+                final String schedule = model.getStart() + " - " +  model.getEnd();
                 final String uid = model.getUid();
+                viewHolder.setInstitution(model.getInstitution());
+                viewHolder.setName(model.getName());
+                viewHolder.setLocation(model.getLocation());
+                viewHolder.setDays(days);
+                viewHolder.setSchedule(schedule);
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -53,13 +60,39 @@ public class MySubscriptionsListActivity extends Activity {
         recyclerView.setAdapter(adapter);
     }
 
-    public static class FavoriteHolder extends RecyclerView.ViewHolder {
-        public FavoriteHolder(View itemView) {
+    public static class SubscriptionHolder extends RecyclerView.ViewHolder {
+        private TextView institution, className, location, days, schedule;
+
+        public SubscriptionHolder(View itemView) {
             super(itemView);
+            institution = (TextView) itemView.findViewById(R.id.institutionNameTv);
+            className = (TextView) itemView.findViewById(R.id.classNameTv);
+            location = (TextView) itemView.findViewById(R.id.locationTv);
+            days = (TextView) itemView.findViewById(R.id.daysTv);
+            schedule = (TextView) itemView.findViewById(R.id.scheduleTv);
+
+
         }
 
-        public void setName(String name) {
-
+        public void setInstitution(String institution){
+            this.location.setText(institution);
         }
+
+        public void setName(String className) {
+            this.className.setText(className);
+        }
+
+        public void setLocation(String location){
+            this.location.setText(location);
+        }
+
+        public void setDays(String days){
+            this.location.setText(days);
+        }
+
+        public void setSchedule(String schedule){
+            this.location.setText(schedule);
+        }
+
     }
 }

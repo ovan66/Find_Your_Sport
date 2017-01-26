@@ -82,7 +82,6 @@ public class Subscribe {
 
             @Override
             public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                //TODO create a int to determinate the result
                 switch (result) {
                     case 0:
                         //NOHTHING HAPPENED
@@ -90,6 +89,7 @@ public class Subscribe {
                         break;
 
                     case SUCCESS:
+                        subscribeCreation(dataSnapshot);
                         callback.success();
                         break;
 
@@ -113,14 +113,12 @@ public class Subscribe {
         });
     }
 
-    //TODO move this to a method
-
     public void subscribeCreation(DataSnapshot dataSnapshot) {
         Event event = dataSnapshot.getValue(Event.class);
         event.setSubscribers(null);
         DatabaseReference reference = new FirebaseRef().userSubsriptions(event.getKey());
         Event subscription = new Event();
-
+        reference.child(event.getKey()).setValue(subscription);
     }
 
 }
