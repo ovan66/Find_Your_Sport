@@ -38,11 +38,9 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".views.main.mySubscriptions.MySubscriptionsListActivity" />
-        <activity android:name=".views.sports.SportsActivity" />
         <activity android:name=".views.create.SteperActivity" />
         <activity android:name=".views.profile.CreateProfileActivity" />
         <activity android:name=".views.profiles.ProfilesActivity" />
-        <activity android:name=".views.main.classList.ClassListActivity" />
         <activity
             android:name=".views.details.DetailsActivity"
             android:label="@string/title_activity_details"

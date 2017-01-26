@@ -1,8 +1,8 @@
 package com.bastian.findyousport.views.main.mySubscriptions;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import static com.bastian.findyousport.views.profiles.ProfilesActivity.UID;
 
-public class MySubscriptionsListActivity extends Activity {
+public class MySubscriptionsListActivity extends AppCompatActivity {
 
     public static final String EVENT = "com.bastian.findyousport.views.sports.sportList.EVENT";
 
