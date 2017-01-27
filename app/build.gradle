@@ -27,6 +27,7 @@ dependencies {
     compile('com.frosquivel:magicalcamera:4.8@aar') {
         transitive = false;
     }
+    compile 'com.bugfender.sdk:android:0.+'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.firebaseui:firebase-ui-auth:1.0.1'
