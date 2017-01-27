@@ -80,6 +80,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                 break;
 
             case 3:
+                icon.setImageResource(R.mipmap.dance_icon);
                 break;
 
             case 4:
